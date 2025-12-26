@@ -11,7 +11,7 @@ const notFound = () => {
         <p className="text-xl mb-5">This page does not exist</p>
         <Link
           to="/"
-          className="text-white bg-linear-to-r from-[#0a0f3c] to-[#4b1f6f] rounded-md px-3 py-2 mt-4"
+          className="text-white bg-linear-to-r from-[#000E38] to-[#3F186A] rounded-md px-3 py-2 mt-4"
         >
           Go Back
         </Link>

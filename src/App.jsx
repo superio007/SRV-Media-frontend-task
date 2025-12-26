@@ -11,7 +11,7 @@ function App() {
         <Route
           index
           element={
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<main>Loading...</main>}>
               <LandingPage />
             </Suspense>
           }
