@@ -36,7 +36,7 @@ const FindYourSchool = () => {
   return (
     <>
       <section className="container mx-auto xxl:px-25 px-5 flex flex-col gap-10.5 md:mb-12 mb-8">
-        <h2 className="bg-linear-to-r from-[#000E38] to-[#3F186A] bg-clip-text text-transparent text-center font-bold md:text-4xl text-2xl">
+        <h2 className="bg-linear-to-r from-[#000E38] to-[#3F186A] bg-clip-text text-transparent text-center font-semibold md:text-4xl text-2xl">
           Choose the School That Fits You Best
         </h2>
         <div className="hidden xl:flex justify-center items-center gap-4">
