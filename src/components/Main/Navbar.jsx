@@ -26,7 +26,7 @@ const Navbar = () => {
             h-20 bg-linear-to-r from-[#000E38] to-[#3F186A] shadow-lg
       `}
           >
-            <div className="container mx-auto h-full md:px-25 px-5 flex items-center justify-between">
+            <div className="container mx-auto h-full xxl:px-25 px-5 flex items-center justify-between">
               {/* Logo */}
               <img
                 src={WebsiteLogo}
@@ -46,7 +46,7 @@ const Navbar = () => {
       ) : (
         <>
           <header className="relative bg-white">
-            <div className="container mx-auto md:px-25 px-5 h-24 flex items-center justify-end">
+            <div className="container mx-auto xxl:px-25 px-5 h-24 flex items-center justify-end">
               <GradientButton />
             </div>
 
@@ -54,7 +54,7 @@ const Navbar = () => {
             <img
               src={WebsiteLogo}
               alt="Website Logo"
-              className="absolute md:left-25 left-5 top-6 md:w-36 w-26 z-50"
+              className="absolute xxl:left-[19rem] md:left-10 left-5 top-6 md:w-36 w-26 z-50"
             />
           </header>
         </>

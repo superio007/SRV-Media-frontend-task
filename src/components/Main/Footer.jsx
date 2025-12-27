@@ -5,8 +5,8 @@ import GradientWrapper from "../Ui/GradientWrapper";
 const Footer = () => {
   return (
     <>
-      <footer className="container mx-auto">
-        <div className="bg-linear-to-t from-[#000E38] to-[#3F186A] md:px-25 px-5 md:py-14.5 py-8 flex md:flex-row flex-col justify-start items-start md:justify-between gap-6">
+      <footer className=" bg-linear-to-t from-[#000E38] to-[#3F186A]">
+        <div className=" container mx-auto xxl:px-25 px-5 md:py-14.5 py-8 flex md:flex-row flex-col justify-start items-start md:justify-between gap-6">
           <div>
             <img
               src={WebsiteLogo}
