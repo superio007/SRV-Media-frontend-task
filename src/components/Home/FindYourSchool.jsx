@@ -39,8 +39,31 @@ const FindYourSchool = () => {
         <h2 className="bg-linear-to-r from-[#000E38] to-[#3F186A] bg-clip-text text-transparent text-center font-bold md:text-4xl text-2xl">
           Choose the School That Fits You Best
         </h2>
-
-        <div className="flex gap-4 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory">
+        <div className="hidden xl:flex justify-center items-center gap-4">
+          {schools.map((school, index) => (
+            <div
+              key={index}
+              className="w-105 relative h-101.25 rounded-xl p-2"
+              style={{
+                backgroundImage: `url(${school.image})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                objectFit: "cover",
+              }}
+            >
+              <div className="absolute inset-0 z-10 bg-linear-to-b from-[#00000000] to-[#00000087] rounded-xl" />
+              <div className="absolute bottom-4 left-4 right-4 z-20">
+                <h3 className="text-[#FFFFFF] font-semibold text-xl">
+                  {school.title}
+                </h3>
+                <p className="text-[#FFFFFF] font-normal text-[18px] ">
+                  {school.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="xl:hidden flex gap-4 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory">
           {schools.map((school) => (
             <div
               key={school.id}
@@ -51,7 +74,8 @@ const FindYourSchool = () => {
                 backgroundPosition: "center",
               }}
             >
-              <div className="absolute bottom-4 left-4 right-4">
+              <div className="absolute inset-0 z-10 bg-linear-to-b from-[#00000000] to-[#00000087] rounded-xl" />
+              <div className="absolute bottom-4 left-4 right-4 z-20">
                 <h3 className="text-white font-semibold text-lg md:text-xl">
                   {school.title}
                 </h3>

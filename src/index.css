@@ -1,4 +1,9 @@
 @import "tailwindcss";
+
+* {
+    font-family: 'open-sans', sans-serif;
+}
+
 .no-scrollbar::-webkit-scrollbar {
     display: none;
 }

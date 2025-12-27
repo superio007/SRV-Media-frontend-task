@@ -8,6 +8,9 @@ const ParticipatingSchool = lazy(() =>
   import("../components/Home/ParticipatingSchool")
 );
 const FindYourSchool = lazy(() => import("../components/Home/FindYourSchool"));
+const ScheduleYourAppointment = lazy(() =>
+  import("../components/Home/ScheduleYourAppointment")
+);
 const LandingPage = () => {
   return (
     <>
@@ -22,6 +25,9 @@ const LandingPage = () => {
       </Suspense>
       <Suspense fallback={<div>Loading...</div>}>
         <FindYourSchool />
+      </Suspense>
+      <Suspense fallback={<div>Loading...</div>}>
+        <ScheduleYourAppointment />
       </Suspense>
     </>
   );
