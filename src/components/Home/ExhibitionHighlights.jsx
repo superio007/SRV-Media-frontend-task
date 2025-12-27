@@ -52,7 +52,7 @@ const ExhibitionHighlights = () => {
   return (
     <>
       <section className="bg-linear-to-t from-[#091740fc] to-[#3F186A]">
-        <div className="container mx-auto xxl:px-25 px-5 md:py-20 py-8">
+        <div className="container mx-auto xxl:px-25 px-5 md:pt-20 pt-8">
           <h2 className="text-white text-center font-semibold md:text-4xl text-2xl mb-10">
             What Makes This Exhibition a Must-Visit
           </h2>
@@ -66,7 +66,7 @@ const ExhibitionHighlights = () => {
               {highlights.map((item, i) => (
                 <div
                   key={i}
-                  className="min-w-[360px] rounded-xl p-0.5 bg-linear-to-r from-[#070F3D] to-[#755797]"
+                  className="min-w-90 rounded-xl p-0.5 bg-linear-to-r from-[#070F3D] to-[#755797]"
                 >
                   <div className="rounded-xl bg-[#DDBFFF] p-7.5 h-80 flex flex-col gap-7.5">
                     <img
