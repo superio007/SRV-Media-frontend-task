@@ -4,6 +4,9 @@ const HeroSection = lazy(() => import("../components/Home/HeroSection"));
 const AwardsAndRecognitions = lazy(() =>
   import("../components/Home/AwardsAndRecognitions")
 );
+const ParticipatingSchool = lazy(() =>
+  import("../components/Home/ParticipatingSchool")
+);
 const LandingPage = () => {
   return (
     <>
@@ -12,6 +15,9 @@ const LandingPage = () => {
       </Suspense>
       <Suspense fallback={<div>Loading...</div>}>
         <AwardsAndRecognitions />
+      </Suspense>
+      <Suspense fallback={<div>Loading...</div>}>
+        <ParticipatingSchool />
       </Suspense>
     </>
   );
