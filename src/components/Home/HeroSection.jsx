@@ -35,16 +35,25 @@ const HeroSection = () => {
   ];
   return (
     <>
-      <section className="bg-linear-to-r from-[#000E38] to-[#3F186A] hidden md:flex items-center">
-        <div className="container mx-auto xxl:px-25 px-5 gap-6 flex justify-between items-center">
-          <div className="flex flex-col w-[33.33%]">
-            <h1 className="md:text-5xl font-semibold bg-linear-to-r from-[#FFCC81] to-[#E9C79F] bg-clip-text text-transparent mb-2">
+      <section className="hidden md:flex min-h-[90vh] bg-linear-to-r from-[#000E38] to-[#3F186A] items-center">
+        <div
+          className="
+      container lg:mx-auto xxl:px-25 px-5
+      flex justify-between items-center 
+      gap-10
+    "
+        >
+          {/* LEFT CONTENT */}
+          <div className="flex flex-col">
+            <h1 className="text-4xl lg:text-5xl w-max font-semibold bg-linear-to-r from-[#FFCC81] to-[#E9C79F] bg-clip-text text-transparent mb-2">
               Discover Gurugram’s <br /> Top 30+ Schools
             </h1>
-            <p className="text-3xl font-normal bg-linear-to-r from-[#FFCC81] to-[#E9C79F] bg-clip-text text-transparent">
+
+            <p className="text-2xl lg:text-3xl font-normal bg-linear-to-r from-[#FFCC81] to-[#E9C79F] bg-clip-text text-transparent">
               All In One Place
             </p>
-            <div className="bg-linear-to-r from-[#FFCC81] to-[#E9C79F] p-6 rounded-full mt-8 w-max flex gap-7.5 text-center items-center">
+
+            <div className="bg-linear-to-r from-[#FFCC81] to-[#E9C79F] p-6 rounded-full mt-8 w-max flex gap-8 items-center">
               <div className="flex flex-col">
                 <h2 className="bg-linear-to-r from-[#000E38] to-[#3F186A] bg-clip-text text-transparent font-bold text-2xl">
                   Apparel House,
@@ -53,27 +62,37 @@ const HeroSection = () => {
                   Sec 44, Gurugram
                 </p>
               </div>
-              <div className="border-r border-[#000E38] h-16"></div>
+
+              <div className="border-r border-[#000E38] h-16" />
+
               <div className="flex flex-col">
                 <h2 className="bg-linear-to-r from-[#000E38] to-[#3F186A] bg-clip-text text-transparent font-bold text-2xl">
-                  2-3 August 2025
+                  2–3 August 2025
                 </h2>
                 <p className="bg-linear-to-r from-[#000E38] to-[#3F186A] bg-clip-text text-transparent text-lg">
-                  Sat-Sun | 10AM - 6PM
+                  Sat–Sun | 10AM – 6PM
                 </p>
               </div>
             </div>
           </div>
-          <div className="flex gap-4 w-[33.33%]">
-            <HeroVerticalSlider images={sliderOne} />
-            <HeroVerticalSlider images={sliderTwo} />
-            <HeroVerticalSlider images={sliderThree} />
+
+          {/* CENTER SLIDERS */}
+          <div className="flex justify-center gap-4">
+            {/* Desktop: 3 sliders */}
+            <div className="hidden xl:flex gap-4">
+              <HeroVerticalSlider images={sliderOne} />
+              <HeroVerticalSlider images={sliderTwo} />
+              <HeroVerticalSlider images={sliderThree} />
+            </div>
           </div>
-          <div className="w-[30]">
+
+          {/* RIGHT FORM */}
+          <div className="w-full max-w-105 justify-self-end">
             <EnquiryForm />
           </div>
         </div>
       </section>
+
       <section className="md:hidden">
         <div className="px-5 relative py-5 gap-6 flex flex-col bg-linear-to-t from-[#000E38] to-[#3F186A]">
           <div
@@ -108,30 +127,27 @@ const HeroSection = () => {
               All In One Place
             </p>
           </div>
-          <img
-            src={Maskgroup}
-            alt="Maskgroup"
-            className="absolute bottom-0 w-full left-0"
-          />
         </div>
-
-        <div className="bg-linear-to-r from-[#FFCC81] to-[#E9C79F] p-3 rounded-full  w-max flex gap-7.5 text-center items-center">
-          <div className="flex flex-col">
-            <h2 className="bg-linear-to-r from-[#000E38] to-[#3F186A] bg-clip-text text-transparent font-bold text-xl">
-              Apparel House,
-            </h2>
-            <p className="bg-linear-to-r from-[#000E38] to-[#3F186A] bg-clip-text text-transparent text-sm">
-              Sec 44, Gurugram
-            </p>
-          </div>
-          <div className="border-r border-[#000E38] h-16"></div>
-          <div className="flex flex-col">
-            <h2 className="bg-linear-to-r from-[#000E38] to-[#3F186A] bg-clip-text text-transparent font-bold text-xl">
-              2-3 August 2025
-            </h2>
-            <p className="bg-linear-to-r from-[#000E38] to-[#3F186A] bg-clip-text text-transparent text-sm">
-              Sat-Sun | 10AM - 6PM
-            </p>
+        <img src={Maskgroup} alt="Maskgroup" className="bg-[#000E38] w-full" />
+        <div className="flex w-full justify-center">
+          <div className="bg-linear-to-r from-[#FFCC81] to-[#E9C79F] p-3 rounded-full  w-max flex gap-7.5 text-center items-center">
+            <div className="flex flex-col">
+              <h2 className="bg-linear-to-r from-[#000E38] to-[#3F186A] bg-clip-text text-transparent font-bold text-xl">
+                Apparel House,
+              </h2>
+              <p className="bg-linear-to-r from-[#000E38] to-[#3F186A] bg-clip-text text-transparent text-sm">
+                Sec 44, Gurugram
+              </p>
+            </div>
+            <div className="border-r border-[#000E38] h-16"></div>
+            <div className="flex flex-col">
+              <h2 className="bg-linear-to-r from-[#000E38] to-[#3F186A] bg-clip-text text-transparent font-bold text-xl">
+                2-3 August 2025
+              </h2>
+              <p className="bg-linear-to-r from-[#000E38] to-[#3F186A] bg-clip-text text-transparent text-sm">
+                Sat-Sun | 10AM - 6PM
+              </p>
+            </div>
           </div>
         </div>
       </section>
