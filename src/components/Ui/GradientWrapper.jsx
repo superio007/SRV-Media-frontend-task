@@ -5,7 +5,6 @@ const GradientIconWrapper = ({
   width,
   height,
 }) => {
-
   return (
     <div className="rounded-xl p-0.5 bg-linear-to-r from-[#070F3D] to-[#755797] inline-flex">
       <div
