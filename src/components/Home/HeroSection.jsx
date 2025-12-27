@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import EnquiryForm from "../Ui/EnquiryForm";
 import HeroVerticalSlider from "../Ui/HeroVerticalSlider";
 import Header_one from "../../assets/Header_one.webp";
@@ -15,6 +15,34 @@ import Header_eleven from "../../assets/Header_eleven.webp";
 import Header_twelve from "../../assets/Header_twelve.webp";
 import Maskgroup from "../../assets/Maskgroup.svg";
 const HeroSection = () => {
+  const containerRef = useRef(null);
+  const isPaused = useRef(false);
+  const speed = 0.5;
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    let rafId;
+
+    const scroll = () => {
+      if (!isPaused.current) {
+        container.scrollLeft += speed;
+
+        if (
+          container.scrollLeft >=
+          container.scrollWidth - container.clientWidth
+        ) {
+          container.scrollLeft = 0;
+        }
+      }
+
+      rafId = requestAnimationFrame(scroll);
+    };
+
+    rafId = requestAnimationFrame(scroll);
+
+    return () => cancelAnimationFrame(rafId);
+  }, [speed]);
   const sliderOne = [
     { src: Header_one },
     { src: Header_two },
@@ -96,8 +124,14 @@ const HeroSection = () => {
       <section className="md:hidden">
         <div className="px-5 relative py-5 gap-6 flex flex-col bg-linear-to-t from-[#000E38] to-[#3F186A]">
           <div
-            className="overflow-x-auto overscroll-x-contain"
+            ref={containerRef}
+            className="overflow-x-auto overscroll-x-contain focus:outline-none"
             style={{ scrollbarWidth: "none" }}
+            tabIndex={0}
+            onMouseEnter={() => (isPaused.current = true)}
+            onMouseLeave={() => (isPaused.current = false)}
+            onFocus={() => (isPaused.current = true)}
+            onBlur={() => (isPaused.current = false)}
           >
             <div className="flex gap-6 w-max px-6">
               {[...sliderOne, ...sliderTwo, ...sliderThree].map((img, index) =>

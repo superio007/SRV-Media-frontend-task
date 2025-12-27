@@ -2,7 +2,33 @@ import FindSchool_one from "../../assets/FindSchool_three.webp";
 import FindSchool_two from "../../assets/FindSchool_two.webp";
 import FindSchool_three from "../../assets/FindSchool_one.webp";
 import FindSchool_four from "../../assets/FindSchool_four.webp";
+import React, { useEffect, useRef, useState } from "react";
 const FindYourSchool = () => {
+  const containerRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const handleScroll = () => {
+      const cardWidth = container.firstChild.offsetWidth;
+      const index = Math.round(container.scrollLeft / cardWidth);
+      setActiveIndex(index);
+    };
+
+    container.addEventListener("scroll", handleScroll, { passive: true });
+    return () => container.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToIndex = (index) => {
+    const container = containerRef.current;
+    const cardWidth = container.firstChild.offsetWidth;
+    container.scrollTo({
+      left: cardWidth * index,
+      behavior: "smooth",
+    });
+  };
   const schools = [
     {
       id: 1,
@@ -63,7 +89,10 @@ const FindYourSchool = () => {
             </div>
           ))}
         </div>
-        <div className="xl:hidden flex gap-4 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory">
+        <div
+          ref={containerRef}
+          className="xl:hidden flex gap-4 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory"
+        >
           {schools.map((school) => (
             <div
               key={school.id}
@@ -76,14 +105,25 @@ const FindYourSchool = () => {
             >
               <div className="absolute inset-0 z-10 bg-linear-to-b from-[#00000000] to-[#00000087] rounded-xl" />
               <div className="absolute bottom-4 left-4 right-4 z-20">
-                <h3 className="text-white font-semibold text-lg md:text-xl">
+                <h3 className="text-white font-semibold text-lg">
                   {school.title}
                 </h3>
-                <p className="text-white text-sm md:text-base">
-                  {school.description}
-                </p>
+                <p className="text-white text-sm">{school.description}</p>
               </div>
             </div>
+          ))}
+        </div>
+
+        {/* Dots */}
+        <div className="xl:hidden flex justify-center gap-2">
+          {schools.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => scrollToIndex(i)}
+              className={`h-2 w-2 rounded-full transition-all ${
+                activeIndex === i ? "bg-[#000E38] w-4" : "bg-gray-300"
+              }`}
+            />
           ))}
         </div>
       </section>
