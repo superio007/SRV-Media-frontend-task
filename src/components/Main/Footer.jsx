@@ -6,9 +6,13 @@ const Footer = () => {
   return (
     <>
       <footer className="container mx-auto">
-        <div className="bg-linear-to-t from-[#000E38] to-[#3F186A] px-25 py-14.5 flex md:flex-row flex-col justify-between gap-6">
+        <div className="bg-linear-to-t from-[#000E38] to-[#3F186A] md:px-25 px-5 md:py-14.5 py-8 flex md:flex-row flex-col justify-start items-start md:justify-between gap-6">
           <div>
-            <img src={WebsiteLogo} alt="Website Logo" className="w-36" />
+            <img
+              src={WebsiteLogo}
+              alt="Website Logo"
+              className="md:w-36 w-26"
+            />
           </div>
           <div className="flex justify-center items-start gap-3.5">
             <GradientWrapper padding="8px">
@@ -90,7 +94,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="bg-white flex justify-center items-center p-4.5">
-          <p className="bg-linear-to-r from-[#000E38] to-[#3F186A] bg-clip-text text-transparent font-normal text-[16px] ">
+          <p className="bg-linear-to-r from-[#000E38] to-[#3F186A] bg-clip-text text-transparent text-center font-normal text-[16px] ">
             Copyright &copy; {new Date().getFullYear()} | All rights reserved.
             Premier Schools Exhibition
           </p>
