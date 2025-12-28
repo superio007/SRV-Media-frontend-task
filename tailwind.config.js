@@ -7,6 +7,9 @@ export default {
         70: "17.5rem",
         180: "45rem",
         10.5: "2.625rem",
+        7.5: "1.875rem",
+        25: "6.25rem",
+        105: "26.25rem",
       },
       animation: {
         "vertical-scroll": "vertical-scroll 25s linear infinite",
