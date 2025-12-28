@@ -225,7 +225,7 @@ const SchoolLogoSlider = ({ schools, direction = 1, speed = 0.5 }) => {
       {[...schools, ...schools].map((school, index) => (
         <div
           key={`${school.name}-${index}`}
-          className="min-w-70 border border-[#E8E7E7] py-4 flex justify-center items-center flex-shrink-0"
+          className="min-w-70 border border-[#E8E7E7] py-4 flex justify-center items-center shrink-0"
         >
           <img
             src={school.logo}

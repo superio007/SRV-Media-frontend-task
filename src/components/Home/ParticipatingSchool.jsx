@@ -18,11 +18,11 @@ const ParticipatingSchool = () => {
   return (
     <>
       <section className="flex flex-col gap-10.5 md:mb-12 mb-8">
-        <h2 className="bg-gradient-to-r from-[#000E38] to-[#3F186A] bg-clip-text text-transparent text-center font-semibold md:text-4xl text-2xl">
+        <h2 className="bg-linear-to-r from-[#000E38] to-[#3F186A] bg-clip-text text-transparent text-center font-semibold md:text-4xl text-2xl">
           Participating Schools
         </h2>
-        <SchoolLogoSlider schools={schools} direction={1} />
         <SchoolLogoSlider schools={schools} direction={-1} />
+        <SchoolLogoSlider schools={schools} direction={1} />
       </section>
     </>
   );
