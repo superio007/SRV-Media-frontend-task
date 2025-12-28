@@ -1,9 +1,12 @@
-module.exports = {
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
       spacing: {
         70: "17.5rem",
         180: "45rem",
+        10.5: "2.625rem",
       },
       animation: {
         "vertical-scroll": "vertical-scroll 25s linear infinite",
