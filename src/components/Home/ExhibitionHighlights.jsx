@@ -71,6 +71,7 @@ const ExhibitionHighlights = () => {
                   <div className="rounded-xl bg-[#DDBFFF] p-7.5 h-80 flex flex-col gap-7.5">
                     <img
                       src={item.image}
+                      loading="lazy"
                       alt={item.title}
                       className="w-20 h-20"
                     />
@@ -109,7 +110,7 @@ const ExhibitionHighlights = () => {
       </section>
 
       <div className="md:mb-12 mb-8">
-        <img src={curve} alt="Curve" className="w-full" />
+        <img src={curve} alt="Curve" className="w-full" loading="lazy" />
       </div>
     </>
   );

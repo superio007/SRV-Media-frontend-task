@@ -28,10 +28,8 @@ const HeroSection = () => {
       if (!isPaused.current) {
         container.scrollLeft += speed;
 
-        if (
-          container.scrollLeft >=
-          container.scrollWidth - container.clientWidth
-        ) {
+        // Reset at HALF, not end
+        if (container.scrollLeft >= container.scrollWidth / 2) {
           container.scrollLeft = 0;
         }
       }
@@ -42,7 +40,8 @@ const HeroSection = () => {
     rafId = requestAnimationFrame(scroll);
 
     return () => cancelAnimationFrame(rafId);
-  }, [speed]);
+  }, []);
+
   const sliderOne = [
     { src: Header_one },
     { src: Header_two },
@@ -125,8 +124,7 @@ const HeroSection = () => {
         <div className="px-5 relative py-5 gap-6 flex flex-col bg-linear-to-t from-[#000E38] to-[#3F186A]">
           <div
             ref={containerRef}
-            className="overflow-x-auto overscroll-x-contain focus:outline-none"
-            style={{ scrollbarWidth: "none" }}
+            className="overflow-x-hidden focus:outline-none"
             tabIndex={0}
             onMouseEnter={() => (isPaused.current = true)}
             onMouseLeave={() => (isPaused.current = false)}
@@ -134,25 +132,22 @@ const HeroSection = () => {
             onBlur={() => (isPaused.current = false)}
           >
             <div className="flex gap-6 w-max px-6">
-              {[...sliderOne, ...sliderTwo, ...sliderThree].map((img, index) =>
-                index % 2 === 0 ? (
+              {[...sliderOne, ...sliderTwo, ...sliderThree].map(
+                (img, index) => (
                   <img
                     key={index}
                     src={img.src}
-                    alt=""
-                    className="w-36 h-56 pt-10 shrink-0"
-                  />
-                ) : (
-                  <img
-                    key={index}
-                    src={img.src}
-                    alt=""
-                    className="w-36 h-56 pb-10 shrink-0"
+                    loading="lazy"
+                    alt={`Header ${index + 1}`}
+                    className={`w-36 h-56 shrink-0 ${
+                      index % 2 === 0 ? "pt-10" : "pb-10"
+                    }`}
                   />
                 )
               )}
             </div>
           </div>
+
           <div className="flex flex-col justify-center items-center text-center">
             <h1 className="text-2xl font-semibold bg-linear-to-r from-[#FFCC81] to-[#E9C79F] bg-clip-text text-transparent mb-2">
               Discover Gurugram’s <br /> Top 30+ Schools
@@ -162,7 +157,12 @@ const HeroSection = () => {
             </p>
           </div>
         </div>
-        <img src={Maskgroup} alt="Maskgroup" className="bg-[#000E38] w-full" />
+        <img
+          src={Maskgroup}
+          alt="Maskgroup"
+          className="bg-[#000E38] w-full"
+          loading="lazy"
+        />
         <div className="flex w-full justify-center">
           <div className="bg-linear-to-r from-[#FFCC81] to-[#E9C79F] p-3 rounded-full  w-max flex gap-7.5 text-center items-center">
             <div className="flex flex-col">

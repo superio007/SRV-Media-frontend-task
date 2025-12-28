@@ -12,6 +12,7 @@ const Footer = () => {
               src={WebsiteLogo}
               alt="Website Logo"
               className="md:w-36 w-26"
+              preload="true"
             />
           </div>
           <div className="flex justify-center items-start gap-3.5">

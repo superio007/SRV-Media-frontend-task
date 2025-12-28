@@ -94,6 +94,7 @@ const SchoolLogoSlider = ({ schools, direction = 1, speed = 0.5 }) => {
           <img
             src={school.logo}
             alt={school.name}
+            loading="lazy"
             className="h-20 object-contain"
           />
         </div>

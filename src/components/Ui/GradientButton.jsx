@@ -12,7 +12,7 @@ const GradientButton = ({
     <button
       onClick={onClick}
       className={`
-        group relative ${size ? "w-60" : "w-auto"} overflow-hidden
+        group relative ${size ? "w-40" : "w-auto"} overflow-hidden
         flex justify-center items-center
         px-6 py-4 rounded-md
         border border-[#000E38]
@@ -37,7 +37,7 @@ const GradientButton = ({
       {/* Content */}
       <span
         className={`
-          relative z-10 flex items-center gap-3
+          relative z-10 flex items-center gap-6
           transition-colors duration-300
           ${
             color
@@ -49,13 +49,17 @@ const GradientButton = ({
         <span className="relative w-5 h-5 flex items-center justify-center">
           {/* Default icon */}
           <span
-            className="
+            className={`
               absolute transition-all duration-300
+              left-0 top-0
               group-hover:opacity-0 group-hover:-translate-y-1
               group-active:opacity-0 group-active:-translate-y-1
-            "
+            `}
           >
-            <MoveUpRight strokeWidth={1.2} color={"#ffff"} />
+            <MoveUpRight
+              strokeWidth={1.2}
+              color={color ? "#000E38" : "#ffffff"}
+            />
           </span>
 
           {/* Active icon */}

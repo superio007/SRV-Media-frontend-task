@@ -2,6 +2,7 @@ import { lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 import MainLayout from "./layouts/MainLayout";
 import NotFound from "./pages/NotFound";
+import FallBack from "./components/Ui/Fallback";
 const LandingPage = lazy(() => import("./pages/LandingPage"));
 
 function App() {
@@ -11,7 +12,7 @@ function App() {
         <Route
           index
           element={
-            <Suspense fallback={<main>Loading...</main>}>
+            <Suspense fallback={<FallBack />}>
               <LandingPage />
             </Suspense>
           }

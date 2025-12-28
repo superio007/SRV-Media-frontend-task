@@ -43,7 +43,12 @@ const VerticalAutoSlider = ({ images, speed = 0.5 }) => {
       <div className="flex flex-col gap-6">
         {[...images, ...images].map((src, i) => (
           <div key={i} className="shrink-0">
-            <img src={src.src} alt="" className="w-full h-full object-cover" />
+            <img
+              src={src.src}
+              alt={`Header ${i + 1}`}
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
           </div>
         ))}
       </div>

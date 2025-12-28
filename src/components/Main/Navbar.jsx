@@ -31,6 +31,7 @@ const Navbar = () => {
               <img
                 src={WebsiteLogo}
                 alt="Website Logo"
+                preload="true"
                 className={`
             transition-all duration-300
             w-24
@@ -54,6 +55,7 @@ const Navbar = () => {
             <img
               src={WebsiteLogo}
               alt="Website Logo"
+              preload="true"
               className="absolute xxl:left-[19rem] md:left-10 left-5 top-6 md:w-36 w-26 z-50"
             />
           </header>

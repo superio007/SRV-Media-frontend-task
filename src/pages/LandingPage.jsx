@@ -14,25 +14,26 @@ const ScheduleYourAppointment = lazy(() =>
 const ExhibitionHighlights = lazy(() =>
   import("../components/Home/ExhibitionHighlights")
 );
+import FallBack from "../components/Ui/Fallback";
 const LandingPage = () => {
   return (
     <>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<FallBack />}>
         <HeroSection />
       </Suspense>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<FallBack />}>
         <AwardsAndRecognitions />
       </Suspense>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<FallBack />}>
         <ParticipatingSchool />
       </Suspense>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<FallBack />}>
         <FindYourSchool />
       </Suspense>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<FallBack />}>
         <ScheduleYourAppointment />
       </Suspense>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<FallBack />}>
         <ExhibitionHighlights />
       </Suspense>
     </>
