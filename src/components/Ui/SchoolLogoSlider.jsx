@@ -10,6 +10,7 @@ const SchoolLogoSlider = ({ schools, direction = 1, speed = 0.5 }) => {
   const lastTouchX = useRef(0);
   const velocity = useRef(0);
   const lastTime = useRef(0);
+  const isInitialized = useRef(false);
 
   // Check for reduced motion preference
   const prefersReducedMotion = useRef(
@@ -17,27 +18,65 @@ const SchoolLogoSlider = ({ schools, direction = 1, speed = 0.5 }) => {
       window.matchMedia("(prefers-reduced-motion: reduce)").matches
   );
 
+  // Initialize scroll position based on direction
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container || isInitialized.current) return;
+
+    // Wait for images to load and container to have proper dimensions
+    const initializePosition = () => {
+      if (container.scrollWidth > 0) {
+        const totalWidth = container.scrollWidth / 2;
+
+        if (direction === -1) {
+          // For reverse direction, start from the end
+          container.scrollLeft = totalWidth;
+        } else {
+          // For forward direction, start from the beginning
+          container.scrollLeft = 0;
+        }
+
+        isInitialized.current = true;
+      } else {
+        // Retry if container isn't ready
+        setTimeout(initializePosition, 100);
+      }
+    };
+
+    initializePosition();
+  }, [direction]);
+
   // AUTO SCROLL with performance optimization
   useEffect(() => {
     const container = containerRef.current;
     if (!container || prefersReducedMotion.current) return;
 
-    const totalWidth = container.scrollWidth / 2;
     let lastFrameTime = 0;
     const targetFPS = 60;
     const frameInterval = 1000 / targetFPS;
 
     const autoScroll = (currentTime) => {
       if (currentTime - lastFrameTime >= frameInterval) {
-        if (!isHovering.current && !isDragging.current) {
+        if (
+          !isHovering.current &&
+          !isDragging.current &&
+          isInitialized.current
+        ) {
+          const totalWidth = container.scrollWidth / 2;
+
           container.scrollLeft += speed * direction;
 
-          if (direction === 1 && container.scrollLeft >= totalWidth) {
-            container.scrollLeft -= totalWidth;
-          }
-
-          if (direction === -1 && container.scrollLeft <= 0) {
-            container.scrollLeft += totalWidth;
+          // Handle infinite scroll for both directions
+          if (direction === 1) {
+            // Forward direction: reset when reaching the end
+            if (container.scrollLeft >= totalWidth) {
+              container.scrollLeft = 0;
+            }
+          } else {
+            // Reverse direction: reset when reaching the beginning
+            if (container.scrollLeft <= 0) {
+              container.scrollLeft = totalWidth;
+            }
           }
         }
         lastFrameTime = currentTime;
@@ -104,9 +143,17 @@ const SchoolLogoSlider = ({ schools, direction = 1, speed = 0.5 }) => {
       const momentumScroll = () => {
         if (Math.abs(currentVelocity) < 0.1) return;
 
+        const totalWidth = container.scrollWidth / 2;
         container.scrollLeft -= currentVelocity;
-        currentVelocity *= 0.95; // Friction
 
+        // Handle infinite scroll during momentum
+        if (container.scrollLeft >= totalWidth) {
+          container.scrollLeft = 0;
+        } else if (container.scrollLeft <= 0) {
+          container.scrollLeft = totalWidth;
+        }
+
+        currentVelocity *= 0.95; // Friction
         requestAnimationFrame(momentumScroll);
       };
 
@@ -225,7 +272,7 @@ const SchoolLogoSlider = ({ schools, direction = 1, speed = 0.5 }) => {
       {[...schools, ...schools].map((school, index) => (
         <div
           key={`${school.name}-${index}`}
-          className="min-w-70 border border-[#E8E7E7] py-4 flex justify-center items-center shrink-0"
+          className="min-w-70 border border-[#E8E7E7] py-4 flex justify-center items-center flex-shrink-0"
         >
           <img
             src={school.logo}
