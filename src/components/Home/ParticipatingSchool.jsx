@@ -1,5 +1,5 @@
 import React from "react";
-import Harrow_School from "../../assets/harrow_school.webp";
+import Harrow_School from "../../assets/Harrow_School.webp";
 import Kings_School from "../../assets/Kings_School.webp";
 import Mombasa_School from "../../assets/Mombasa_School.webp";
 import Shrewsbury_School from "../../assets/Shrewsbury_School.webp";
