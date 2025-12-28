@@ -6,37 +6,36 @@ const SchoolLogoSlider = ({ schools, direction = 1, speed = 0.5 }) => {
   const startX = useRef(0);
   const scrollStart = useRef(0);
   const isHovering = useRef(false);
+  const rafIdRef = useRef(null);
 
   // AUTO SCROLL
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
-    let rafId;
+    const totalWidth = container.scrollWidth / 2;
 
     const autoScroll = () => {
-      if (!isHovering.current) {
+      if (!isHovering.current && !isDragging.current) {
         container.scrollLeft += speed * direction;
 
-        // loop effect
-        if (
-          container.scrollLeft >=
-          container.scrollWidth - container.clientWidth
-        ) {
-          container.scrollLeft = 0;
+        if (direction === 1 && container.scrollLeft >= totalWidth) {
+          container.scrollLeft -= totalWidth;
         }
 
-        if (container.scrollLeft <= 0) {
-          container.scrollLeft = container.scrollWidth - container.clientWidth;
+        if (direction === -1 && container.scrollLeft <= 0) {
+          container.scrollLeft += totalWidth;
         }
       }
 
-      rafId = requestAnimationFrame(autoScroll);
+      rafIdRef.current = requestAnimationFrame(autoScroll);
     };
 
-    rafId = requestAnimationFrame(autoScroll);
+    rafIdRef.current = requestAnimationFrame(autoScroll);
 
-    return () => cancelAnimationFrame(rafId);
+    return () => {
+      if (rafIdRef.current) cancelAnimationFrame(rafIdRef.current);
+    };
   }, [direction, speed]);
 
   // DRAG SUPPORT
