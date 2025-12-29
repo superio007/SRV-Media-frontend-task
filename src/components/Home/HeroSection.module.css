@@ -6,7 +6,7 @@
 .hero {
     display: flex;
     align-items: center;
-    min-height: 90vh;
+    /* min-height: 90vh; */
     background: var(--gradient-primary);
 }
 
