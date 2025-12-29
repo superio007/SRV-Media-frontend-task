@@ -1,3 +1,5 @@
+import styles from "./GradientWrapper.module.css";
+
 const GradientIconWrapper = ({
   children,
   bg = "#DDBFFF",
@@ -6,12 +8,9 @@ const GradientIconWrapper = ({
   height,
 }) => {
   return (
-    <span
-      className="rounded-xl p-0.5 bg-linear-to-r from-[#070F3D] to-[#755797] inline-flex"
-      aria-hidden="true"
-    >
+    <span className={styles["gradient-wrapper"]} aria-hidden="true">
       <span
-        className="rounded-xl flex items-center justify-center"
+        className={styles["gradient-wrapper__inner"]}
         style={{
           backgroundColor: bg,
           padding: padding,

@@ -1,0 +1,88 @@
+/* ==========================================================================
+   ScheduleYourAppointment Component - BEM Naming
+   ========================================================================== */
+
+/* Block: schedule */
+.schedule {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: var(--spacing-10-5);
+    width: auto;
+    height: 45.3125rem;
+    padding: 0 1.25rem;
+    background-size: cover;
+    background-position: center;
+}
+
+.schedule--desktop {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .schedule--desktop {
+        display: flex;
+    }
+}
+
+@media (min-width: 1920px) {
+    .schedule--desktop {
+        padding: 0 var(--spacing-25);
+    }
+}
+
+.schedule--mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 2.5rem 1.25rem;
+}
+
+@media (min-width: 768px) {
+    .schedule--mobile {
+        display: none;
+    }
+}
+
+/* Element: schedule__container */
+.schedule__container {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    max-width: var(--container-max);
+    /* margin: 0 auto; */
+}
+
+/* Element: schedule__content */
+.schedule__content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+/* Element: schedule__tagline */
+.schedule__tagline {
+    font-size: var(--font-size-3xl);
+    background: var(--gradient-purple-accent);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.schedule__tagline--mobile {
+    font-size: var(--font-size-lg);
+}
+
+/* Element: schedule__heading */
+.schedule__heading {
+    font-size: var(--font-size-6xl);
+    background: var(--gradient-primary-vertical);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.schedule__heading--mobile {
+    font-size: var(--font-size-3xl);
+}

@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import GradientButton from "./GradientButton";
+import styles from "./EnquiryForm.module.css";
 
 const EnquiryForm = () => {
   const {
@@ -16,25 +17,22 @@ const EnquiryForm = () => {
 
   return (
     <aside
-      className="w-103.5 rounded-xl p-6 bg-linear-to-r relative from-[#00000020] to-[#06153254]"
+      className={styles["enquiry-form"]}
       aria-labelledby="enquiry-form-heading"
     >
-      <h2
-        id="enquiry-form-heading"
-        className="text-3xl font-bold text-white text-start mb-6"
-      >
+      <h2 id="enquiry-form-heading" className={styles["enquiry-form__heading"]}>
         Enquire Now
       </h2>
 
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col gap-3"
+        className={styles["enquiry-form__form"]}
         noValidate
       >
-        <fieldset className="contents">
+        <fieldset className={styles["enquiry-form__fieldset"]}>
           <legend className="sr-only">Contact Information</legend>
 
-          <div className="bg-[#ffffff2a] rounded-md border p-3">
+          <div className={styles["enquiry-form__field"]}>
             <label htmlFor="parentName" className="sr-only">
               Parent's Name
             </label>
@@ -42,7 +40,7 @@ const EnquiryForm = () => {
               id="parentName"
               type="text"
               placeholder="Parent's Name"
-              className="outline-none border-none w-full text-white text-xl bg-transparent"
+              className={styles["enquiry-form__input"]}
               aria-invalid={errors.parentName ? "true" : "false"}
               aria-describedby={
                 errors.parentName ? "parentName-error" : undefined
@@ -55,14 +53,14 @@ const EnquiryForm = () => {
           {errors.parentName && (
             <p
               id="parentName-error"
-              className="text-red-400 text-sm"
+              className={styles["enquiry-form__error"]}
               role="alert"
             >
               {errors.parentName.message}
             </p>
           )}
 
-          <div className="bg-[#ffffff2a] rounded-md border p-3">
+          <div className={styles["enquiry-form__field"]}>
             <label htmlFor="phone" className="sr-only">
               Phone number
             </label>
@@ -70,7 +68,7 @@ const EnquiryForm = () => {
               id="phone"
               type="tel"
               placeholder="Phone number"
-              className="outline-none border-none w-full text-white text-xl bg-transparent"
+              className={styles["enquiry-form__input"]}
               aria-invalid={errors.phone ? "true" : "false"}
               aria-describedby={errors.phone ? "phone-error" : undefined}
               {...register("phone", {
@@ -83,19 +81,23 @@ const EnquiryForm = () => {
             />
           </div>
           {errors.phone && (
-            <p id="phone-error" className="text-red-400 text-sm" role="alert">
+            <p
+              id="phone-error"
+              className={styles["enquiry-form__error"]}
+              role="alert"
+            >
               {errors.phone.message}
             </p>
           )}
 
-          <div className="bg-[#ffffff2a] rounded-md border p-3">
+          <div className={styles["enquiry-form__field"]}>
             <label htmlFor="grade" className="sr-only">
               Which grade are you looking for?
             </label>
             <textarea
               id="grade"
               placeholder="Which grade are you looking for?"
-              className="outline-none border-none w-full text-white text-xl bg-transparent resize-none"
+              className={styles["enquiry-form__textarea"]}
               aria-invalid={errors.grade ? "true" : "false"}
               aria-describedby={errors.grade ? "grade-error" : undefined}
               {...register("grade", {
@@ -104,7 +106,11 @@ const EnquiryForm = () => {
             />
           </div>
           {errors.grade && (
-            <p id="grade-error" className="text-red-400 text-sm" role="alert">
+            <p
+              id="grade-error"
+              className={styles["enquiry-form__error"]}
+              role="alert"
+            >
               {errors.grade.message}
             </p>
           )}

@@ -1,65 +1,32 @@
 import { MoveUpRight, MoveRight } from "lucide-react";
+import styles from "./GradientButton.module.css";
 
 const GradientButton = ({
   label = "REGISTER NOW",
   size = false,
   onClick,
   color = false,
-  className = "",
   type = "button",
 }) => {
-  return (
-    <button
-      onClick={onClick}
-      type={type}
-      className={`
-        group relative ${size ? "w-40" : "w-auto"} overflow-hidden
-        flex justify-center items-center
-        px-6 py-4 rounded-md
-        border border-[#000E38]
-        font-semibold ${color ? "text-white" : "text-[#000E38]"}
-        transition-transform duration-150
-        active:scale-95
-        active:shadow-inner
-        ${className}
-      `}
-    >
-      {/* Gradient wipe */}
-      <span
-        className={`
-          absolute inset-y-0 left-0 w-14
-          ${color ? "bg-white" : "bg-linear-to-r from-[#000E38] to-[#3F186A]"}
-          transition-all duration-300 ease-out
-          group-hover:w-full
-          group-active:w-full
-        `}
-        aria-hidden="true"
-      />
+  const buttonClasses = [
+    styles["gradient-button"],
+    size && styles["gradient-button--sized"],
+    color && styles["gradient-button--inverted"],
+  ]
+    .filter(Boolean)
+    .join(" ");
 
-      {/* Content */}
-      <span
-        className={`
-          relative z-10 flex items-center gap-6
-          transition-colors duration-300
-          ${
-            color
-              ? "group-hover:text-[#000E38] group-active:text-[#000E38]"
-              : "group-hover:text-white group-active:text-white"
-          }
-        `}
-      >
+  return (
+    <button onClick={onClick} type={type} className={buttonClasses}>
+      <span className={styles["gradient-button__wipe"]} aria-hidden="true" />
+
+      <span className={styles["gradient-button__content"]}>
         <span
-          className="relative w-5 h-5 flex items-center justify-center"
+          className={styles["gradient-button__icon-wrapper"]}
           aria-hidden="true"
         >
-          {/* Default icon */}
           <span
-            className={`
-              absolute transition-all duration-300
-              left-0 top-0
-              group-hover:opacity-0 group-hover:-translate-y-1
-              group-active:opacity-0 group-active:-translate-y-1
-            `}
+            className={`${styles["gradient-button__icon"]} ${styles["gradient-button__icon--default"]}`}
           >
             <MoveUpRight
               strokeWidth={1.2}
@@ -67,14 +34,8 @@ const GradientButton = ({
             />
           </span>
 
-          {/* Active icon */}
           <span
-            className="
-              absolute opacity-0 translate-y-1
-              transition-all duration-300
-              group-hover:opacity-100 group-hover:translate-y-0
-              group-active:opacity-100 group-active:translate-y-0
-            "
+            className={`${styles["gradient-button__icon"]} ${styles["gradient-button__icon--active"]}`}
           >
             <MoveRight
               strokeWidth={1.2}

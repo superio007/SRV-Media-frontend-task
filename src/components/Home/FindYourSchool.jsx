@@ -3,6 +3,7 @@ import FindSchool_two from "../../assets/FindSchool_two.webp";
 import FindSchool_three from "../../assets/FindSchool_one.webp";
 import FindSchool_four from "../../assets/FindSchool_four.webp";
 import { useEffect, useRef, useState } from "react";
+import styles from "./FindYourSchool.module.css";
 
 const FindYourSchool = () => {
   const containerRef = useRef(null);
@@ -64,38 +65,32 @@ const FindYourSchool = () => {
 
   return (
     <section
-      className="container mx-auto xxl:px-25 px-5 flex flex-col gap-10.5 md:mb-12 mb-8"
+      className={styles["find-school"]}
       aria-labelledby="find-school-heading"
     >
-      <h2
-        id="find-school-heading"
-        className="bg-linear-to-r from-[#000E38] to-[#3F186A] bg-clip-text text-transparent text-center font-semibold md:text-4xl text-2xl"
-      >
+      <h2 id="find-school-heading" className={styles["find-school__heading"]}>
         Choose the School That Fits You Best
       </h2>
 
       {/* Desktop Grid */}
-      <ul className="hidden xl:flex justify-center items-center gap-4 list-none">
+      <ul className={styles["find-school__grid"]}>
         {schools.map((school) => (
           <li key={school.id}>
             <article
-              className="w-105 relative h-101.25 rounded-xl p-2"
+              className={styles["find-school__card"]}
               style={{
                 backgroundImage: `url(${school.image})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-                objectFit: "cover",
               }}
             >
               <div
-                className="absolute inset-0 z-10 bg-linear-to-b from-[#00000000] to-[#00000087] rounded-xl"
+                className={styles["find-school__card-overlay"]}
                 aria-hidden="true"
               />
-              <div className="absolute bottom-4 left-4 right-4 z-20">
-                <h3 className="text-[#FFFFFF] font-semibold text-xl">
+              <div className={styles["find-school__card-content"]}>
+                <h3 className={styles["find-school__card-title"]}>
                   {school.title}
                 </h3>
-                <p className="text-[#FFFFFF] font-normal text-[18px]">
+                <p className={styles["find-school__card-description"]}>
                   {school.description}
                 </p>
               </div>
@@ -107,29 +102,33 @@ const FindYourSchool = () => {
       {/* Mobile Carousel */}
       <ul
         ref={containerRef}
-        className="xl:hidden flex gap-4 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory list-none"
+        className={styles["find-school__carousel"]}
         role="region"
         aria-label="School types carousel"
       >
         {schools.map((school) => (
-          <li key={school.id} className="shrink-0 snap-start">
+          <li key={school.id}>
             <article
-              className="w-105 relative h-101.25 rounded-xl p-2"
+              className={styles["find-school__card"]}
               style={{
                 backgroundImage: `url(${school.image})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
               }}
             >
               <div
-                className="absolute inset-0 z-10 bg-linear-to-b from-[#00000000] to-[#00000087] rounded-xl"
+                className={styles["find-school__card-overlay"]}
                 aria-hidden="true"
               />
-              <div className="absolute bottom-4 left-4 right-4 z-20">
-                <h3 className="text-white font-semibold text-lg">
+              <div className={styles["find-school__card-content"]}>
+                <h3
+                  className={`${styles["find-school__card-title"]} ${styles["find-school__card-title--mobile"]}`}
+                >
                   {school.title}
                 </h3>
-                <p className="text-white text-sm">{school.description}</p>
+                <p
+                  className={`${styles["find-school__card-description"]} ${styles["find-school__card-description--mobile"]}`}
+                >
+                  {school.description}
+                </p>
               </div>
             </article>
           </li>
@@ -138,15 +137,15 @@ const FindYourSchool = () => {
 
       {/* Dots Navigation */}
       <nav
-        className="xl:hidden flex justify-center gap-2"
+        className={styles["find-school__pagination"]}
         aria-label="Carousel pagination"
       >
         {schools.map((_, i) => (
           <button
             key={i}
             onClick={() => scrollToIndex(i)}
-            className={`h-2 w-2 rounded-full transition-all ${
-              activeIndex === i ? "bg-[#000E38] w-4" : "bg-gray-300"
+            className={`${styles["find-school__dot"]} ${
+              activeIndex === i ? styles["find-school__dot--active"] : ""
             }`}
             aria-label={`Go to slide ${i + 1}`}
             aria-current={activeIndex === i ? "step" : undefined}

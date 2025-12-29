@@ -1,0 +1,114 @@
+/* ==========================================================================
+   GradientButton Component - BEM Naming
+   ========================================================================== */
+
+/* Block: gradient-button */
+.gradient-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 1.5rem;
+    border: 1px solid var(--color-primary-dark);
+    border-radius: var(--radius-md);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-primary-dark);
+    overflow: hidden;
+    transition: transform var(--transition-fast);
+    cursor: pointer;
+}
+
+.gradient-button:active {
+    transform: scale(0.95);
+    box-shadow: var(--shadow-inner);
+}
+
+/* Modifier: size */
+.gradient-button--sized {
+    width: 10rem;
+}
+
+/* Modifier: color (inverted) */
+.gradient-button--inverted {
+    color: var(--color-white);
+}
+
+/* Element: gradient-button__wipe */
+.gradient-button__wipe {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 3.5rem;
+    background: var(--gradient-primary);
+    transition: width var(--transition-normal) ease-out;
+}
+
+.gradient-button:hover .gradient-button__wipe,
+.gradient-button:active .gradient-button__wipe {
+    width: 100%;
+}
+
+.gradient-button--inverted .gradient-button__wipe {
+    background: var(--color-white);
+}
+
+/* Element: gradient-button__content */
+.gradient-button__content {
+    position: relative;
+    z-index: var(--z-10);
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    transition: color var(--transition-normal);
+}
+
+.gradient-button:hover .gradient-button__content,
+.gradient-button:active .gradient-button__content {
+    color: var(--color-white);
+}
+
+.gradient-button--inverted:hover .gradient-button__content,
+.gradient-button--inverted:active .gradient-button__content {
+    color: var(--color-primary-dark);
+}
+
+/* Element: gradient-button__icon-wrapper */
+.gradient-button__icon-wrapper {
+    position: relative;
+    width: 1.25rem;
+    height: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Element: gradient-button__icon */
+.gradient-button__icon {
+    position: absolute;
+    transition: all var(--transition-normal);
+}
+
+.gradient-button__icon--default {
+    left: 0;
+    top: 0;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.gradient-button:hover .gradient-button__icon--default,
+.gradient-button:active .gradient-button__icon--default {
+    opacity: 0;
+    transform: translateY(-0.25rem);
+}
+
+.gradient-button__icon--active {
+    opacity: 0;
+    transform: translateY(0.25rem);
+}
+
+.gradient-button:hover .gradient-button__icon--active,
+.gradient-button:active .gradient-button__icon--active {
+    opacity: 1;
+    transform: translateY(0);
+}

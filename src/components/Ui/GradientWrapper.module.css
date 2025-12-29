@@ -1,0 +1,20 @@
+/* ==========================================================================
+   GradientWrapper Component - BEM Naming
+   ========================================================================== */
+
+/* Block: gradient-wrapper */
+.gradient-wrapper {
+    display: inline-flex;
+    padding: 2px;
+    border-radius: var(--radius-xl);
+    background: var(--gradient-card-border);
+}
+
+/* Element: gradient-wrapper__inner */
+.gradient-wrapper__inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-xl);
+    background-color: var(--color-bg-card);
+}

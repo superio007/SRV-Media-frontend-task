@@ -1,4 +1,5 @@
 import { useEffect, useRef, useCallback } from "react";
+import styles from "./HeroVerticalSlider.module.css";
 
 const VerticalAutoSlider = ({ images, speed = 0.5 }) => {
   const containerRef = useRef(null);
@@ -141,13 +142,7 @@ const VerticalAutoSlider = ({ images, speed = 0.5 }) => {
   return (
     <div
       ref={containerRef}
-      className="h-180 overflow-hidden focus:outline-none touch-pan-y"
-      style={{
-        WebkitOverflowScrolling: "touch",
-        overflowY: "scroll",
-        scrollbarWidth: "none",
-        msOverflowStyle: "none",
-      }}
+      className={styles["vertical-slider"]}
       tabIndex={0}
       role="region"
       aria-label="Vertical image slider"
@@ -165,13 +160,13 @@ const VerticalAutoSlider = ({ images, speed = 0.5 }) => {
       onFocus={handleFocus}
       onBlur={handleBlur}
     >
-      <div className="flex flex-col gap-6">
+      <div className={styles["vertical-slider__track"]}>
         {[...images, ...images].map((src, i) => (
-          <div key={`image-${i}`} className="shrink-0">
+          <div key={`image-${i}`} className={styles["vertical-slider__item"]}>
             <img
               src={src.src}
               alt={`School exhibition image ${(i % images.length) + 1}`}
-              className="w-full h-full object-cover pointer-events-none"
+              className={styles["vertical-slider__image"]}
               loading="lazy"
               draggable={false}
             />

@@ -1,0 +1,58 @@
+/* ==========================================================================
+   Fallback Component - BEM Naming
+   ========================================================================== */
+
+/* Block: fallback */
+.fallback {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* Element: fallback__container */
+.fallback__container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    padding: 0 1.5rem;
+}
+
+/* Element: fallback__skeleton */
+.fallback__skeleton {
+    background-color: var(--color-gray-300);
+    border-radius: var(--radius-md);
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.fallback__skeleton--hero {
+    height: 12rem;
+}
+
+.fallback__skeleton--card {
+    height: 6rem;
+}
+
+.fallback__skeleton--section {
+    height: 8rem;
+}
+
+/* Element: fallback__grid */
+.fallback__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}

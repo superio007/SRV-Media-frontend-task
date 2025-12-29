@@ -1,0 +1,43 @@
+/* ==========================================================================
+   NotFound Page - BEM Naming
+   ========================================================================== */
+
+/* Block: not-found */
+.not-found {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+}
+
+/* Element: not-found__icon */
+.not-found__icon {
+    width: 3.5rem;
+    height: 3.5rem;
+    margin-bottom: 1rem;
+    color: var(--color-yellow-400);
+}
+
+/* Element: not-found__heading */
+.not-found__heading {
+    margin-bottom: 1rem;
+    font-size: var(--font-size-6xl);
+    font-weight: var(--font-weight-semibold);
+}
+
+/* Element: not-found__text */
+.not-found__text {
+    margin-bottom: 1.25rem;
+    font-size: var(--font-size-xl);
+}
+
+/* Element: not-found__link */
+.not-found__link {
+    margin-top: 1rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-md);
+    background: var(--gradient-primary);
+    color: var(--color-white);
+}

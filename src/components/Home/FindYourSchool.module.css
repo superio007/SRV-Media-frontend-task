@@ -1,0 +1,159 @@
+/* ==========================================================================
+   FindYourSchool Component - BEM Naming
+   ========================================================================== */
+
+/* Block: find-school */
+.find-school {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-10-5);
+    max-width: var(--container-max);
+    margin: 0 auto 2rem;
+    padding: 0 1.25rem;
+}
+
+@media (min-width: 768px) {
+    .find-school {
+        margin-bottom: 3rem;
+    }
+}
+
+@media (min-width: 1920px) {
+    .find-school {
+        padding: 0 var(--spacing-25);
+    }
+}
+
+/* Element: find-school__heading */
+.find-school__heading {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-semibold);
+    text-align: center;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+@media (min-width: 768px) {
+    .find-school__heading {
+        font-size: var(--font-size-4xl);
+    }
+}
+
+/* Element: find-school__grid */
+.find-school__grid {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+@media (min-width: 1280px) {
+    .find-school__grid {
+        display: flex;
+    }
+}
+
+/* Element: find-school__carousel */
+.find-school__carousel {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.find-school__carousel::-webkit-scrollbar {
+    display: none;
+}
+
+@media (min-width: 1280px) {
+    .find-school__carousel {
+        display: none;
+    }
+}
+
+/* Element: find-school__card */
+.find-school__card {
+    position: relative;
+    width: var(--spacing-105);
+    height: 25.3125rem;
+    padding: 0.5rem;
+    border-radius: var(--radius-xl);
+    background-size: cover;
+    background-position: center;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+}
+
+/* Element: find-school__card-overlay */
+.find-school__card-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: var(--z-10);
+    border-radius: var(--radius-xl);
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.53));
+}
+
+/* Element: find-school__card-content */
+.find-school__card-content {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    z-index: var(--z-20);
+}
+
+/* Element: find-school__card-title */
+.find-school__card-title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-white);
+}
+
+.find-school__card-title--mobile {
+    font-size: var(--font-size-lg);
+}
+
+/* Element: find-school__card-description */
+.find-school__card-description {
+    font-size: 1.125rem;
+    font-weight: var(--font-weight-normal);
+    color: var(--color-white);
+}
+
+.find-school__card-description--mobile {
+    font-size: var(--font-size-sm);
+}
+
+/* Element: find-school__pagination */
+.find-school__pagination {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+@media (min-width: 1280px) {
+    .find-school__pagination {
+        display: none;
+    }
+}
+
+/* Element: find-school__dot */
+.find-school__dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border: none;
+    border-radius: var(--radius-full);
+    background-color: var(--color-gray-300);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+}
+
+.find-school__dot--active {
+    width: 1rem;
+    background-color: var(--color-primary-dark);
+}

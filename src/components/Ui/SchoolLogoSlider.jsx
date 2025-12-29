@@ -1,4 +1,5 @@
 import { useEffect, useRef, useCallback } from "react";
+import styles from "./SchoolLogoSlider.module.css";
 
 const SchoolLogoSlider = ({ schools, direction = 1, speed = 0.5 }) => {
   const containerRef = useRef(null);
@@ -164,11 +165,7 @@ const SchoolLogoSlider = ({ schools, direction = 1, speed = 0.5 }) => {
   return (
     <ul
       ref={containerRef}
-      className="flex gap-4 overflow-x-scroll scrollbar-hide cursor-grab active:cursor-grabbing select-none touch-pan-x list-none"
-      style={{
-        scrollbarWidth: "none",
-        WebkitOverflowScrolling: "touch",
-      }}
+      className={styles["logo-slider"]}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
@@ -187,13 +184,13 @@ const SchoolLogoSlider = ({ schools, direction = 1, speed = 0.5 }) => {
       {[...schools, ...schools].map((school, index) => (
         <li
           key={`${school.name}-${index}`}
-          className="min-w-70 border border-[#E8E7E7] py-4 flex justify-center items-center shrink-0"
+          className={styles["logo-slider__item"]}
         >
           <img
             src={school.logo}
             alt={`${school.name} logo`}
             loading="lazy"
-            className="h-20 object-contain pointer-events-none"
+            className={styles["logo-slider__image"]}
             draggable={false}
           />
         </li>

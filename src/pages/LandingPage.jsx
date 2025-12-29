@@ -1,4 +1,5 @@
 import { lazy, Suspense } from "react";
+import styles from "./LandingPage.module.css";
 
 const HeroSection = lazy(() => import("../components/Home/HeroSection"));
 const AwardsAndRecognitions = lazy(() =>
@@ -18,7 +19,7 @@ import FallBack from "../components/Ui/Fallback";
 
 const LandingPage = () => {
   return (
-    <article>
+    <article className={styles.landing}>
       <Suspense fallback={<FallBack />}>
         <HeroSection />
       </Suspense>
@@ -28,9 +29,9 @@ const LandingPage = () => {
       <Suspense fallback={<FallBack />}>
         <ParticipatingSchool />
       </Suspense>
-      <Suspense fallback={<FallBack />}>
+      {/* <Suspense fallback={<FallBack />}>
         <FindYourSchool />
-      </Suspense>
+      </Suspense> */}
       <Suspense fallback={<FallBack />}>
         <ScheduleYourAppointment />
       </Suspense>

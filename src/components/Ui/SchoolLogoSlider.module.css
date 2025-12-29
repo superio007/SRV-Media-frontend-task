@@ -1,0 +1,46 @@
+/* ==========================================================================
+   SchoolLogoSlider Component - BEM Naming
+   ========================================================================== */
+
+/* Block: logo-slider */
+.logo-slider {
+    display: flex;
+    gap: 1rem;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+    cursor: grab;
+    user-select: none;
+    touch-action: pan-x;
+}
+
+.logo-slider::-webkit-scrollbar {
+    display: none;
+}
+
+.logo-slider:active {
+    cursor: grabbing;
+}
+
+.logo-slider:focus {
+    outline: none;
+}
+
+/* Element: logo-slider__item */
+.logo-slider__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: var(--spacing-70);
+    padding: 1rem 0;
+    border: 1px solid var(--color-gray-light);
+    flex-shrink: 0;
+}
+
+/* Element: logo-slider__image */
+.logo-slider__image {
+    height: 5rem;
+    object-fit: contain;
+    pointer-events: none;
+}

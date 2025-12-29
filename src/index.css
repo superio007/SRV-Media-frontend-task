@@ -1,96 +1,12 @@
-@import "tailwindcss";
+/* ==========================================================================
+   Main Stylesheet - Import Order Matters
+   ========================================================================== */
 
-* {
-    font-family: 'open-sans', sans-serif;
-}
+/* 1. CSS Variables */
+@import './styles/variables.css';
 
-/* Screen reader only - for accessibility */
-.sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border-width: 0;
-}
+/* 2. Base/Reset Styles */
+@import './styles/base.css';
 
-/* Enhanced scrollbar hiding for all browsers */
-.no-scrollbar::-webkit-scrollbar {
-    display: none;
-}
-
-.no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
-
-/* Hide scrollbars globally for slider containers */
-.scrollbar-hide::-webkit-scrollbar {
-    display: none;
-}
-
-.scrollbar-hide {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
-
-/* Smooth scrolling for iOS devices */
-.touch-scroll {
-    -webkit-overflow-scrolling: touch;
-}
-
-/* Prevent text selection during drag */
-.no-select {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-/* Animation keyframes */
-@keyframes vertical-scroll {
-    from {
-        transform: translateY(0);
-    }
-
-    to {
-        transform: translateY(-50%);
-    }
-}
-
-.animate-vertical-scroll {
-    animation: vertical-scroll 25s linear infinite;
-}
-
-/* Mobile-specific optimizations */
-@media (max-width: 768px) {
-
-    /* Ensure touch targets are large enough */
-    .touch-target {
-        min-height: 44px;
-        min-width: 44px;
-    }
-
-    /* Optimize for mobile performance */
-    .mobile-optimized {
-        transform: translateZ(0);
-        -webkit-transform: translateZ(0);
-        will-change: transform;
-    }
-}
-
-/* Reduce motion for users who prefer it */
-@media (prefers-reduced-motion: reduce) {
-    .animate-vertical-scroll {
-        animation: none;
-    }
-
-    * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-    }
-}
+/* 3. Utility Classes */
+@import './styles/utilities.css';

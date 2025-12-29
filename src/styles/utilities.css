@@ -1,0 +1,93 @@
+/* ==========================================================================
+   Utility Classes
+   ========================================================================== */
+
+/* Container */
+.container {
+    width: 100%;
+    max-width: var(--container-max);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+}
+
+@media (min-width: 1920px) {
+    .container {
+        padding-left: var(--spacing-25);
+        padding-right: var(--spacing-25);
+    }
+}
+
+/* Gradient Text */
+.gradient-text-gold {
+    background: var(--gradient-gold);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.gradient-text-primary {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.gradient-text-primary-vertical {
+    background: var(--gradient-primary-vertical);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.gradient-text-purple {
+    background: var(--gradient-purple-accent);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Gradient Backgrounds */
+.gradient-bg-primary {
+    background: var(--gradient-primary);
+}
+
+.gradient-bg-primary-vertical {
+    background: var(--gradient-primary-vertical);
+}
+
+.gradient-bg-gold {
+    background: var(--gradient-gold);
+}
+
+/* Animations */
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes vertical-scroll {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-50%);
+    }
+}
+
+.animate-vertical-scroll {
+    animation: vertical-scroll 25s linear infinite;
+}

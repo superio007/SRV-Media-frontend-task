@@ -1,0 +1,79 @@
+/* ==========================================================================
+   EnquiryForm Component - BEM Naming
+   ========================================================================== */
+
+/* Block: enquiry-form */
+.enquiry-form {
+    position: relative;
+    width: 25.875rem;
+    padding: 1.5rem;
+    border-radius: var(--radius-xl);
+    background: linear-gradient(to right, var(--color-bg-form), var(--color-bg-form-end));
+}
+
+/* Element: enquiry-form__heading */
+.enquiry-form__heading {
+    margin-bottom: 1.5rem;
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-white);
+    text-align: left;
+}
+
+/* Element: enquiry-form__form */
+.enquiry-form__form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+/* Element: enquiry-form__fieldset */
+.enquiry-form__fieldset {
+    display: contents;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Element: enquiry-form__field */
+.enquiry-form__field {
+    padding: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: var(--radius-md);
+    background-color: var(--color-bg-input);
+}
+
+/* Element: enquiry-form__input */
+.enquiry-form__input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: var(--font-size-xl);
+    color: var(--color-white);
+}
+
+.enquiry-form__input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Element: enquiry-form__textarea */
+.enquiry-form__textarea {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: var(--font-size-xl);
+    color: var(--color-white);
+    resize: none;
+}
+
+.enquiry-form__textarea::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Element: enquiry-form__error */
+.enquiry-form__error {
+    font-size: var(--font-size-sm);
+    color: var(--color-red-400);
+}

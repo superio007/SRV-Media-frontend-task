@@ -1,0 +1,36 @@
+/* ==========================================================================
+   AwardsAndRecognitions Component - BEM Naming
+   ========================================================================== */
+
+/* Block: awards */
+.awards {
+    /* Section wrapper */
+}
+
+/* Element: awards__list */
+.awards__list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+    place-items: center;
+    max-width: 64rem;
+    margin: 0 auto;
+    padding: 2rem 1.25rem;
+}
+
+@media (min-width: 768px) {
+    .awards__list {
+        grid-template-columns: repeat(4, 1fr);
+        padding: 5rem 1.25rem;
+    }
+}
+
+/* Element: awards__item */
+.awards__item {
+    /* List item wrapper */
+}
+
+/* Element: awards__image */
+.awards__image {
+    width: 10.625rem;
+}

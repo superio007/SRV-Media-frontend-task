@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { MoveRight } from "lucide-react";
 import GradientButton from "../Ui/GradientButton";
 import WebsiteLogo from "../../assets/WebsiteLogo.webp";
-import { MoveRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import styles from "./Navbar.module.css";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -18,40 +19,26 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Skip Navigation Link */}
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:bg-white focus:px-4 focus:py-2 focus:rounded-md focus:text-[#000E38] focus:font-semibold"
-      >
+      <a href="#main-content" className={styles["navbar__skip-link"]}>
         Skip to main content
       </a>
 
       {scrolled ? (
-        <header
-          className={`
-            fixed top-0 left-0 w-full z-50
-            transition-all duration-300 ease-in-out
-            h-20 bg-linear-to-r from-[#000E38] to-[#3F186A] shadow-lg
-          `}
-          role="banner"
-        >
+        <header className={styles["navbar--scrolled"]} role="banner">
           <nav
-            className="container mx-auto h-full xxl:px-25 px-5 flex items-center justify-between"
+            className={`${styles.navbar__container} ${styles["navbar__container--scrolled"]}`}
             aria-label="Main navigation"
           >
             <Link to="/" aria-label="School Exhibition 2025 - Home">
               <img
                 src={WebsiteLogo}
                 alt="School Exhibition 2025 Logo"
-                className={`
-                  transition-all duration-300
-                  w-24
-                `}
+                className={styles.navbar__logo}
               />
             </Link>
 
             <button
-              className="bg-white group flex gap-3 justify-center hover:cursor-pointer items-center px-6 py-4 rounded-md border font-semibold text-[#1e4990]"
+              className={styles.navbar__button}
               type="button"
               aria-label="Register for the exhibition"
             >
@@ -61,25 +48,21 @@ const Navbar = () => {
           </nav>
         </header>
       ) : (
-        <header className="relative bg-white" role="banner">
+        <header className={styles.navbar} role="banner">
           <nav
-            className="container mx-auto xxl:px-25 px-5 h-24 flex items-center justify-end"
+            className={styles.navbar__container}
             aria-label="Main navigation"
           >
             <GradientButton />
           </nav>
 
-          <a
-            href="/"
-            className="absolute xxl:left-[19rem] md:left-10 left-5 top-6 z-50"
+          <Link
+            to="/"
+            className={styles["navbar__logo--floating"]}
             aria-label="School Exhibition 2025 - Home"
           >
-            <img
-              src={WebsiteLogo}
-              alt="School Exhibition 2025 Logo"
-              className="md:w-36 w-26"
-            />
-          </a>
+            <img src={WebsiteLogo} alt="School Exhibition 2025 Logo" />
+          </Link>
         </header>
       )}
     </>

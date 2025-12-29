@@ -6,6 +6,7 @@ import ExclusiveOffers from "../../assets/ExclusiveOffers.webp";
 import InterectHeads from "../../assets/InterectHeads.webp";
 import SchoolsOfferings from "../../assets/SchoolsOfferings.webp";
 import { MoveRight, MoveLeft } from "lucide-react";
+import styles from "./ExhibitionHighlights.module.css";
 
 const ExhibitionHighlights = () => {
   const highlights = [
@@ -52,45 +53,39 @@ const ExhibitionHighlights = () => {
   return (
     <>
       <section
-        className="bg-linear-to-t from-[#091740fc] to-[#3F186A]"
+        className={styles.highlights}
         aria-labelledby="highlights-heading"
       >
-        <div className="container mx-auto xxl:px-25 px-5 md:pt-20 pt-8">
-          <h2
-            id="highlights-heading"
-            className="text-white text-center font-semibold md:text-4xl text-2xl mb-10"
-          >
+        <div className={styles.highlights__container}>
+          <h2 id="highlights-heading" className={styles.highlights__heading}>
             What Makes This Exhibition a Must-Visit
           </h2>
 
           {/* SLIDER */}
           <div
-            className="overflow-hidden"
+            className={styles.highlights__slider}
             role="region"
             aria-label="Exhibition highlights carousel"
           >
             <ul
-              className="flex gap-4 transition-transform duration-300 list-none"
+              className={styles.highlights__track}
               style={{ transform: `translateX(-${index * cardWidth}px)` }}
             >
               {highlights.map((item, i) => (
-                <li
-                  key={i}
-                  className="min-w-90 rounded-xl p-0.5 bg-linear-to-r from-[#070F3D] to-[#755797]"
-                >
-                  <article className="rounded-xl bg-[#DDBFFF] p-7.5 h-80 flex flex-col gap-7.5">
+                <li key={i} className={styles.highlights__item}>
+                  <article className={styles.highlights__card}>
                     <img
                       src={item.image}
                       loading="lazy"
                       alt=""
-                      className="w-20 h-20"
+                      className={styles["highlights__card-image"]}
                       aria-hidden="true"
                     />
-                    <div>
-                      <h3 className="font-bold text-2xl text-[#000E38]">
+                    <div className={styles["highlights__card-content"]}>
+                      <h3 className={styles["highlights__card-title"]}>
                         {item.title}
                       </h3>
-                      <p className="text-xl text-[#000E38]">
+                      <p className={styles["highlights__card-description"]}>
                         {item.description}
                       </p>
                     </div>
@@ -102,39 +97,38 @@ const ExhibitionHighlights = () => {
 
           {/* ARROWS */}
           <nav
-            className="flex justify-center gap-4 mt-8"
+            className={styles.highlights__nav}
             aria-label="Carousel navigation"
           >
             <button
               onClick={prev}
               disabled={index === 0}
-              className="border p-3 border-white group hover:bg-white rounded-full disabled:opacity-40 hover:cursor-pointer"
+              className={styles["highlights__nav-button"]}
               aria-label="Previous highlight"
               type="button"
             >
-              <MoveLeft
-                className="text-white group-hover:text-[#000E38] group-hover:cursor-pointer"
-                aria-hidden="true"
-              />
+              <MoveLeft aria-hidden="true" />
             </button>
             <button
               onClick={next}
               disabled={index === highlights.length - 1}
-              className="border p-3 border-white group hover:bg-white rounded-full disabled:opacity-40 hover:cursor-pointer"
+              className={styles["highlights__nav-button"]}
               aria-label="Next highlight"
               type="button"
             >
-              <MoveRight
-                className="text-white group-hover:text-[#000E38] group-hover:cursor-pointer"
-                aria-hidden="true"
-              />
+              <MoveRight aria-hidden="true" />
             </button>
           </nav>
         </div>
       </section>
 
-      <div className="md:mb-12 mb-8" aria-hidden="true">
-        <img src={curve} alt="" className="w-full" loading="lazy" />
+      <div className={styles.highlights__curve} aria-hidden="true">
+        <img
+          src={curve}
+          alt=""
+          className={styles["highlights__curve-image"]}
+          loading="lazy"
+        />
       </div>
     </>
   );
