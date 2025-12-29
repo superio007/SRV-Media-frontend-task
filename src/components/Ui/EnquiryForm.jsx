@@ -43,6 +43,7 @@ const EnquiryForm = () => {
               type="text"
               placeholder="Parent's Name"
               className="outline-none border-none w-full text-white text-xl bg-transparent"
+              aria-invalid={errors.parentName ? "true" : "false"}
               aria-describedby={
                 errors.parentName ? "parentName-error" : undefined
               }
@@ -70,6 +71,7 @@ const EnquiryForm = () => {
               type="tel"
               placeholder="Phone number"
               className="outline-none border-none w-full text-white text-xl bg-transparent"
+              aria-invalid={errors.phone ? "true" : "false"}
               aria-describedby={errors.phone ? "phone-error" : undefined}
               {...register("phone", {
                 required: "Phone number is required",
@@ -94,6 +96,7 @@ const EnquiryForm = () => {
               id="grade"
               placeholder="Which grade are you looking for?"
               className="outline-none border-none w-full text-white text-xl bg-transparent resize-none"
+              aria-invalid={errors.grade ? "true" : "false"}
               aria-describedby={errors.grade ? "grade-error" : undefined}
               {...register("grade", {
                 required: "Grade information is required",

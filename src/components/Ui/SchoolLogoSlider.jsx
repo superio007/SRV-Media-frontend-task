@@ -187,17 +187,15 @@ const SchoolLogoSlider = ({ schools, direction = 1, speed = 0.5 }) => {
       {[...schools, ...schools].map((school, index) => (
         <li
           key={`${school.name}-${index}`}
-          className="min-w-70 border border-[#E8E7E7] py-4 flex justify-center items-center flex-shrink-0"
+          className="min-w-70 border border-[#E8E7E7] py-4 flex justify-center items-center shrink-0"
         >
-          <figure>
-            <img
-              src={school.logo}
-              alt={`${school.name} logo`}
-              loading="lazy"
-              className="h-20 object-contain pointer-events-none"
-              draggable={false}
-            />
-          </figure>
+          <img
+            src={school.logo}
+            alt={`${school.name} logo`}
+            loading="lazy"
+            className="h-20 object-contain pointer-events-none"
+            draggable={false}
+          />
         </li>
       ))}
     </ul>

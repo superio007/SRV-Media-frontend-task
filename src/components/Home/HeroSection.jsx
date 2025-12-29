@@ -195,8 +195,9 @@ const HeroSection = () => {
               </time>
             </aside>
           </header>
-          <figure
+          <div
             className="flex justify-center gap-4"
+            role="img"
             aria-label="School images gallery"
           >
             <div className="hidden xl:flex gap-4">
@@ -204,7 +205,7 @@ const HeroSection = () => {
               <HeroVerticalSlider images={sliderTwo} />
               <HeroVerticalSlider images={sliderThree} />
             </div>
-          </figure>
+          </div>
           <div className="w-full max-w-105 justify-self-end">
             <EnquiryForm />
           </div>
@@ -214,7 +215,7 @@ const HeroSection = () => {
       {/* Mobile Hero Section */}
       <section className="md:hidden" aria-labelledby="hero-heading-mobile">
         <div className="px-5 relative py-5 gap-6 flex flex-col bg-linear-to-t from-[#000E38] to-[#3F186A]">
-          <figure
+          <div
             ref={containerRef}
             className="overflow-x-hidden focus:outline-none touch-pan-x scrollbar-hide cursor-grab active:cursor-grabbing select-none"
             style={{
@@ -255,7 +256,7 @@ const HeroSection = () => {
                 )
               )}
             </div>
-          </figure>
+          </div>
           <header className="flex flex-col justify-center items-center text-center">
             <h1
               id="hero-heading-mobile"

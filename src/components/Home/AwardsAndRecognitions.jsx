@@ -11,44 +11,36 @@ const AwardsAndRecognitions = () => {
       </h2>
       <ul className="container mx-auto max-w-5xl grid grid-cols-2 md:grid-cols-4 gap-10 px-5 py-8 md:py-20 place-items-center list-none">
         <li>
-          <figure>
-            <img
-              src={TrustedByParents}
-              alt="Trusted By Parents - Award badge"
-              loading="lazy"
-              className="w-42.5"
-            />
-          </figure>
+          <img
+            src={TrustedByParents}
+            alt="Trusted By Parents - Award badge"
+            loading="lazy"
+            className="w-42.5"
+          />
         </li>
         <li>
-          <figure>
-            <img
-              src={YearsOfLeagacy}
-              alt="Years Of Legacy - Award badge"
-              className="w-42.5"
-              loading="lazy"
-            />
-          </figure>
+          <img
+            src={YearsOfLeagacy}
+            alt="Years Of Legacy - Award badge"
+            className="w-42.5"
+            loading="lazy"
+          />
         </li>
         <li>
-          <figure>
-            <img
-              src={ParticipatingSchools}
-              alt="Participating Schools - Award badge"
-              className="w-42.5"
-              loading="lazy"
-            />
-          </figure>
+          <img
+            src={ParticipatingSchools}
+            alt="Participating Schools - Award badge"
+            className="w-42.5"
+            loading="lazy"
+          />
         </li>
         <li>
-          <figure>
-            <img
-              src={AccrossGlobe}
-              alt="Across Globe - Award badge"
-              className="w-42.5"
-              loading="lazy"
-            />
-          </figure>
+          <img
+            src={AccrossGlobe}
+            alt="Across Globe - Award badge"
+            className="w-42.5"
+            loading="lazy"
+          />
         </li>
       </ul>
     </section>

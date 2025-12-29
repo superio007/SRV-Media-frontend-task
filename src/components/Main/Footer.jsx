@@ -9,7 +9,7 @@ const Footer = () => {
       role="contentinfo"
     >
       <div className="container mx-auto xxl:px-25 px-5 md:py-14.5 py-8 flex md:flex-row flex-col justify-start items-start md:justify-between gap-6">
-        <figure>
+        <div>
           <a href="/" aria-label="School Exhibition 2025 - Home">
             <img
               src={WebsiteLogo}
@@ -17,7 +17,7 @@ const Footer = () => {
               className="md:w-36 w-26"
             />
           </a>
-        </figure>
+        </div>
 
         <article className="flex justify-center items-start gap-3.5">
           <GradientWrapper padding="8px">
@@ -138,12 +138,12 @@ const Footer = () => {
         </article>
       </div>
 
-      <small className="bg-white flex justify-center items-center p-4.5">
-        <p className="bg-linear-to-r from-[#000E38] to-[#3F186A] bg-clip-text text-transparent text-center font-normal text-[16px]">
+      <div className="bg-white flex justify-center items-center p-4.5">
+        <small className="bg-linear-to-r from-[#000E38] to-[#3F186A] bg-clip-text text-transparent text-center font-normal text-[16px]">
           Copyright &copy; {new Date().getFullYear()} | All rights reserved.
           Premier Schools Exhibition
-        </p>
-      </small>
+        </small>
+      </div>
     </footer>
   );
 };

@@ -149,7 +149,7 @@ const FindYourSchool = () => {
               activeIndex === i ? "bg-[#000E38] w-4" : "bg-gray-300"
             }`}
             aria-label={`Go to slide ${i + 1}`}
-            aria-current={activeIndex === i ? "true" : undefined}
+            aria-current={activeIndex === i ? "step" : undefined}
             type="button"
           />
         ))}

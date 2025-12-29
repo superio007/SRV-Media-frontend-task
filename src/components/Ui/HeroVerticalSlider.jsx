@@ -139,7 +139,7 @@ const VerticalAutoSlider = ({ images, speed = 0.5 }) => {
   }, []);
 
   return (
-    <figure
+    <div
       ref={containerRef}
       className="h-180 overflow-hidden focus:outline-none touch-pan-y"
       style={{
@@ -178,7 +178,7 @@ const VerticalAutoSlider = ({ images, speed = 0.5 }) => {
           </div>
         ))}
       </div>
-    </figure>
+    </div>
   );
 };
 

@@ -79,15 +79,13 @@ const ExhibitionHighlights = () => {
                   className="min-w-90 rounded-xl p-0.5 bg-linear-to-r from-[#070F3D] to-[#755797]"
                 >
                   <article className="rounded-xl bg-[#DDBFFF] p-7.5 h-80 flex flex-col gap-7.5">
-                    <figure>
-                      <img
-                        src={item.image}
-                        loading="lazy"
-                        alt=""
-                        className="w-20 h-20"
-                        aria-hidden="true"
-                      />
-                    </figure>
+                    <img
+                      src={item.image}
+                      loading="lazy"
+                      alt=""
+                      className="w-20 h-20"
+                      aria-hidden="true"
+                    />
                     <div>
                       <h3 className="font-bold text-2xl text-[#000E38]">
                         {item.title}
@@ -135,15 +133,9 @@ const ExhibitionHighlights = () => {
         </div>
       </section>
 
-      <figure className="md:mb-12 mb-8">
-        <img
-          src={curve}
-          alt=""
-          className="w-full"
-          loading="lazy"
-          aria-hidden="true"
-        />
-      </figure>
+      <div className="md:mb-12 mb-8" aria-hidden="true">
+        <img src={curve} alt="" className="w-full" loading="lazy" />
+      </div>
     </>
   );
 };
