@@ -1,4 +1,3 @@
-import React from "react";
 import { MoveUpRight, MoveRight } from "lucide-react";
 
 const GradientButton = ({
@@ -7,10 +6,12 @@ const GradientButton = ({
   onClick,
   color = false,
   className = "",
+  type = "button",
 }) => {
   return (
     <button
       onClick={onClick}
+      type={type}
       className={`
         group relative ${size ? "w-40" : "w-auto"} overflow-hidden
         flex justify-center items-center
@@ -32,6 +33,7 @@ const GradientButton = ({
           group-hover:w-full
           group-active:w-full
         `}
+        aria-hidden="true"
       />
 
       {/* Content */}
@@ -46,7 +48,10 @@ const GradientButton = ({
           }
         `}
       >
-        <span className="relative w-5 h-5 flex items-center justify-center">
+        <span
+          className="relative w-5 h-5 flex items-center justify-center"
+          aria-hidden="true"
+        >
           {/* Default icon */}
           <span
             className={`

@@ -27,13 +27,11 @@ const HeroSection = () => {
   const rafIdRef = useRef(null);
   const speed = 0.5;
 
-  // Check for reduced motion preference
   const prefersReducedMotion = useRef(
     typeof window !== "undefined" &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches
   );
 
-  // Enhanced auto-scroll with performance optimization
   useEffect(() => {
     const container = containerRef.current;
     if (!container || prefersReducedMotion.current) return;
@@ -46,160 +44,92 @@ const HeroSection = () => {
       if (currentTime - lastFrameTime >= frameInterval) {
         if (!isPaused.current && !isDragging.current) {
           container.scrollLeft += speed;
-
-          // Reset at HALF, not end
           if (container.scrollLeft >= container.scrollWidth / 2) {
             container.scrollLeft = 0;
           }
         }
         lastFrameTime = currentTime;
       }
-
       rafIdRef.current = requestAnimationFrame(scroll);
     };
 
     rafIdRef.current = requestAnimationFrame(scroll);
-
     return () => {
       if (rafIdRef.current) cancelAnimationFrame(rafIdRef.current);
     };
   }, []);
 
-  // Touch and pointer event handlers
   const handleStart = useCallback((e) => {
     isDragging.current = true;
     isPaused.current = true;
-
     const clientX = e.touches ? e.touches[0].clientX : e.clientX;
     startX.current = clientX;
     lastTouchX.current = clientX;
     scrollStart.current = containerRef.current.scrollLeft;
     lastTime.current = Date.now();
     velocity.current = 0;
-
     if (e.target.setPointerCapture && e.pointerId) {
       e.target.setPointerCapture(e.pointerId);
     }
-
     e.preventDefault();
   }, []);
 
   const handleMove = useCallback((e) => {
     if (!isDragging.current) return;
-
     const clientX = e.touches ? e.touches[0].clientX : e.clientX;
     const currentTime = Date.now();
     const timeDelta = currentTime - lastTime.current;
-
     if (timeDelta > 0) {
       velocity.current = (clientX - lastTouchX.current) / timeDelta;
     }
-
     const dx = clientX - startX.current;
     containerRef.current.scrollLeft = scrollStart.current - dx;
-
     lastTouchX.current = clientX;
     lastTime.current = currentTime;
-
     e.preventDefault();
   }, []);
 
   const handleEnd = useCallback((e) => {
     if (!isDragging.current) return;
-
     isDragging.current = false;
-
-    // Add momentum scrolling
     if (Math.abs(velocity.current) > 0.1) {
       const container = containerRef.current;
       let currentVelocity = velocity.current * 100;
-
       const momentumScroll = () => {
         if (Math.abs(currentVelocity) < 0.1) {
           isPaused.current = false;
           return;
         }
-
         container.scrollLeft -= currentVelocity;
         currentVelocity *= 0.95;
-
         requestAnimationFrame(momentumScroll);
       };
-
       requestAnimationFrame(momentumScroll);
     } else {
-      // Resume auto-scroll after a short delay
       setTimeout(() => {
         isPaused.current = false;
       }, 1000);
     }
-
     e.preventDefault();
   }, []);
 
-  // Touch event handlers
-  const handleTouchStart = useCallback(
-    (e) => {
-      handleStart(e);
-    },
-    [handleStart]
-  );
-
-  const handleTouchMove = useCallback(
-    (e) => {
-      handleMove(e);
-    },
-    [handleMove]
-  );
-
-  const handleTouchEnd = useCallback(
-    (e) => {
-      handleEnd(e);
-    },
-    [handleEnd]
-  );
-
-  // Pointer event handlers
-  const handlePointerDown = useCallback(
-    (e) => {
-      handleStart(e);
-    },
-    [handleStart]
-  );
-
-  const handlePointerMove = useCallback(
-    (e) => {
-      handleMove(e);
-    },
-    [handleMove]
-  );
-
-  const handlePointerUp = useCallback(
-    (e) => {
-      handleEnd(e);
-    },
-    [handleEnd]
-  );
-
-  // Mouse event handlers
+  const handleTouchStart = useCallback((e) => handleStart(e), [handleStart]);
+  const handleTouchMove = useCallback((e) => handleMove(e), [handleMove]);
+  const handleTouchEnd = useCallback((e) => handleEnd(e), [handleEnd]);
+  const handlePointerDown = useCallback((e) => handleStart(e), [handleStart]);
+  const handlePointerMove = useCallback((e) => handleMove(e), [handleMove]);
+  const handlePointerUp = useCallback((e) => handleEnd(e), [handleEnd]);
   const handleMouseEnter = useCallback(() => {
     isPaused.current = true;
   }, []);
-
   const handleMouseLeave = useCallback(() => {
-    if (!isDragging.current) {
-      isPaused.current = false;
-    }
+    if (!isDragging.current) isPaused.current = false;
   }, []);
-
   const handleFocus = useCallback(() => {
     isPaused.current = true;
   }, []);
-
   const handleBlur = useCallback(() => {
-    if (!isDragging.current) {
-      isPaused.current = false;
-    }
+    if (!isDragging.current) isPaused.current = false;
   }, []);
 
   const sliderOne = [
@@ -223,67 +153,68 @@ const HeroSection = () => {
 
   return (
     <>
-      <section className="hidden md:flex min-h-[90vh] bg-linear-to-r from-[#000E38] to-[#3F186A] items-center">
-        <div
-          className="
-      container lg:mx-auto xxl:px-25 px-5
-      flex justify-between items-center 
-      gap-10
-    "
-        >
-          {/* LEFT CONTENT */}
-          <div className="flex flex-col">
-            <h1 className="text-4xl lg:text-5xl w-max font-semibold bg-linear-to-r from-[#FFCC81] to-[#E9C79F] bg-clip-text text-transparent mb-2">
+      {/* Desktop Hero Section */}
+      <section
+        className="hidden md:flex min-h-[90vh] bg-linear-to-r from-[#000E38] to-[#3F186A] items-center"
+        aria-labelledby="hero-heading-desktop"
+      >
+        <div className="container lg:mx-auto xxl:px-25 px-5 flex justify-between items-center gap-10">
+          <header className="flex flex-col">
+            <h1
+              id="hero-heading-desktop"
+              className="text-4xl lg:text-5xl w-max font-semibold bg-linear-to-r from-[#FFCC81] to-[#E9C79F] bg-clip-text text-transparent mb-2"
+            >
               Discover Gurugram's <br /> Top 30+ Schools
             </h1>
-
             <p className="text-2xl lg:text-3xl font-normal bg-linear-to-r from-[#FFCC81] to-[#E9C79F] bg-clip-text text-transparent">
               All In One Place
             </p>
-
-            <div className="bg-linear-to-r from-[#FFCC81] to-[#E9C79F] p-6 rounded-full mt-8 w-max flex gap-8 items-center">
-              <div className="flex flex-col">
-                <h2 className="bg-linear-to-r from-[#000E38] to-[#3F186A] bg-clip-text text-transparent font-bold text-2xl">
+            <aside
+              className="bg-linear-to-r from-[#FFCC81] to-[#E9C79F] p-6 rounded-full mt-8 w-max flex gap-8 items-center"
+              aria-label="Event details"
+            >
+              <address className="flex flex-col not-italic">
+                <strong className="bg-linear-to-r from-[#000E38] to-[#3F186A] bg-clip-text text-transparent font-bold text-2xl">
                   Apparel House,
-                </h2>
-                <p className="bg-linear-to-r from-[#000E38] to-[#3F186A] bg-clip-text text-transparent text-lg">
+                </strong>
+                <span className="bg-linear-to-r from-[#000E38] to-[#3F186A] bg-clip-text text-transparent text-lg">
                   Sec 44, Gurugram
-                </p>
-              </div>
-
-              <div className="border-r border-[#000E38] h-16" />
-
-              <div className="flex flex-col">
-                <h2 className="bg-linear-to-r from-[#000E38] to-[#3F186A] bg-clip-text text-transparent font-bold text-2xl">
+                </span>
+              </address>
+              <span
+                className="border-r border-[#000E38] h-16"
+                aria-hidden="true"
+              />
+              <time className="flex flex-col" dateTime="2025-08-02/2025-08-03">
+                <strong className="bg-linear-to-r from-[#000E38] to-[#3F186A] bg-clip-text text-transparent font-bold text-2xl">
                   2–3 August 2025
-                </h2>
-                <p className="bg-linear-to-r from-[#000E38] to-[#3F186A] bg-clip-text text-transparent text-lg">
+                </strong>
+                <span className="bg-linear-to-r from-[#000E38] to-[#3F186A] bg-clip-text text-transparent text-lg">
                   Sat–Sun | 10AM – 6PM
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* CENTER SLIDERS */}
-          <div className="flex justify-center gap-4">
-            {/* Desktop: 3 sliders */}
+                </span>
+              </time>
+            </aside>
+          </header>
+          <figure
+            className="flex justify-center gap-4"
+            aria-label="School images gallery"
+          >
             <div className="hidden xl:flex gap-4">
               <HeroVerticalSlider images={sliderOne} />
               <HeroVerticalSlider images={sliderTwo} />
               <HeroVerticalSlider images={sliderThree} />
             </div>
-          </div>
-
-          {/* RIGHT FORM */}
+          </figure>
           <div className="w-full max-w-105 justify-self-end">
             <EnquiryForm />
           </div>
         </div>
       </section>
 
-      <section className="md:hidden">
+      {/* Mobile Hero Section */}
+      <section className="md:hidden" aria-labelledby="hero-heading-mobile">
         <div className="px-5 relative py-5 gap-6 flex flex-col bg-linear-to-t from-[#000E38] to-[#3F186A]">
-          <div
+          <figure
             ref={containerRef}
             className="overflow-x-hidden focus:outline-none touch-pan-x scrollbar-hide cursor-grab active:cursor-grabbing select-none"
             style={{
@@ -294,18 +225,15 @@ const HeroSection = () => {
             tabIndex={0}
             role="region"
             aria-label="Hero images slider"
-            // Touch events
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
             onTouchCancel={handleTouchEnd}
-            // Pointer events
             onPointerDown={handlePointerDown}
             onPointerMove={handlePointerMove}
             onPointerUp={handlePointerUp}
             onPointerLeave={handlePointerUp}
             onPointerCancel={handlePointerUp}
-            // Mouse events
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
             onFocus={handleFocus}
@@ -318,7 +246,7 @@ const HeroSection = () => {
                     key={`hero-${index}`}
                     src={img.src}
                     loading="lazy"
-                    alt={`Header ${index + 1}`}
+                    alt={`School exhibition image ${index + 1}`}
                     className={`w-36 h-56 shrink-0 pointer-events-none ${
                       index % 2 === 0 ? "pt-10" : "pb-10"
                     }`}
@@ -327,44 +255,53 @@ const HeroSection = () => {
                 )
               )}
             </div>
-          </div>
-
-          <div className="flex flex-col justify-center items-center text-center">
-            <h1 className="text-2xl font-semibold bg-linear-to-r from-[#FFCC81] to-[#E9C79F] bg-clip-text text-transparent mb-2">
+          </figure>
+          <header className="flex flex-col justify-center items-center text-center">
+            <h1
+              id="hero-heading-mobile"
+              className="text-2xl font-semibold bg-linear-to-r from-[#FFCC81] to-[#E9C79F] bg-clip-text text-transparent mb-2"
+            >
               Discover Gurugram's <br /> Top 30+ Schools
             </h1>
             <p className="text-sm font-normal bg-linear-to-r from-[#FFCC81] to-[#E9C79F] bg-clip-text text-transparent">
               All In One Place
             </p>
-          </div>
+          </header>
         </div>
         <img
           src={Maskgroup}
-          alt="Maskgroup"
+          alt=""
           className="bg-[#000E38] w-full"
           loading="lazy"
+          aria-hidden="true"
         />
-        <div className="flex w-full justify-center">
-          <div className="bg-linear-to-r from-[#FFCC81] to-[#E9C79F] p-3 rounded-full  w-max flex gap-7.5 text-center items-center">
-            <div className="flex flex-col">
-              <h2 className="bg-linear-to-r from-[#000E38] to-[#3F186A] bg-clip-text text-transparent font-bold text-xl">
+        <aside
+          className="flex w-full justify-center"
+          aria-label="Event details"
+        >
+          <div className="bg-linear-to-r from-[#FFCC81] to-[#E9C79F] p-3 rounded-full w-max flex gap-7.5 text-center items-center">
+            <address className="flex flex-col not-italic">
+              <strong className="bg-linear-to-r from-[#000E38] to-[#3F186A] bg-clip-text text-transparent font-bold text-xl">
                 Apparel House,
-              </h2>
-              <p className="bg-linear-to-r from-[#000E38] to-[#3F186A] bg-clip-text text-transparent text-sm">
+              </strong>
+              <span className="bg-linear-to-r from-[#000E38] to-[#3F186A] bg-clip-text text-transparent text-sm">
                 Sec 44, Gurugram
-              </p>
-            </div>
-            <div className="border-r border-[#000E38] h-16"></div>
-            <div className="flex flex-col">
-              <h2 className="bg-linear-to-r from-[#000E38] to-[#3F186A] bg-clip-text text-transparent font-bold text-xl">
+              </span>
+            </address>
+            <span
+              className="border-r border-[#000E38] h-16"
+              aria-hidden="true"
+            ></span>
+            <time className="flex flex-col" dateTime="2025-08-02/2025-08-03">
+              <strong className="bg-linear-to-r from-[#000E38] to-[#3F186A] bg-clip-text text-transparent font-bold text-xl">
                 2-3 August 2025
-              </h2>
-              <p className="bg-linear-to-r from-[#000E38] to-[#3F186A] bg-clip-text text-transparent text-sm">
+              </strong>
+              <span className="bg-linear-to-r from-[#000E38] to-[#3F186A] bg-clip-text text-transparent text-sm">
                 Sat-Sun | 10AM - 6PM
-              </p>
-            </div>
+              </span>
+            </time>
           </div>
-        </div>
+        </aside>
       </section>
     </>
   );

@@ -15,16 +15,22 @@ const ParticipatingSchool = () => {
     { name: "TISB School", logo: TISB_School },
     { name: "Woodstock School", logo: Woodstock_School },
   ];
+
   return (
-    <>
-      <section className="flex flex-col gap-10.5 md:mb-12 mb-8">
-        <h2 className="bg-linear-to-r from-[#000E38] to-[#3F186A] bg-clip-text text-transparent text-center font-semibold md:text-4xl text-2xl">
-          Participating Schools
-        </h2>
-        <SchoolLogoSlider schools={schools} direction={-1} />
-        <SchoolLogoSlider schools={schools} direction={1} />
-      </section>
-    </>
+    <section
+      className="flex flex-col gap-10.5 md:mb-12 mb-8"
+      aria-labelledby="participating-schools-heading"
+    >
+      <h2
+        id="participating-schools-heading"
+        className="bg-linear-to-r from-[#000E38] to-[#3F186A] bg-clip-text text-transparent text-center font-semibold md:text-4xl text-2xl"
+      >
+        Participating Schools
+      </h2>
+      <SchoolLogoSlider schools={schools} direction={-1} />
+      <SchoolLogoSlider schools={schools} direction={1} />
+    </section>
   );
 };
+
 export default ParticipatingSchool;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import curve from "../../assets/curve.webp";
 import AdmissionsCounselling from "../../assets/AdmissionsCounselling.webp";
 import ComparePedagogy from "../../assets/ComparePedagogy.webp";
@@ -39,7 +39,7 @@ const ExhibitionHighlights = () => {
   ];
 
   const [index, setIndex] = useState(0);
-  const cardWidth = 380; // must match actual card width + gap
+  const cardWidth = 380;
 
   const prev = () => {
     if (index > 0) setIndex(index - 1);
@@ -51,30 +51,43 @@ const ExhibitionHighlights = () => {
 
   return (
     <>
-      <section className="bg-linear-to-t from-[#091740fc] to-[#3F186A]">
+      <section
+        className="bg-linear-to-t from-[#091740fc] to-[#3F186A]"
+        aria-labelledby="highlights-heading"
+      >
         <div className="container mx-auto xxl:px-25 px-5 md:pt-20 pt-8">
-          <h2 className="text-white text-center font-semibold md:text-4xl text-2xl mb-10">
+          <h2
+            id="highlights-heading"
+            className="text-white text-center font-semibold md:text-4xl text-2xl mb-10"
+          >
             What Makes This Exhibition a Must-Visit
           </h2>
 
           {/* SLIDER */}
-          <div className="overflow-hidden">
-            <div
-              className="flex gap-4 transition-transform duration-300"
+          <div
+            className="overflow-hidden"
+            role="region"
+            aria-label="Exhibition highlights carousel"
+          >
+            <ul
+              className="flex gap-4 transition-transform duration-300 list-none"
               style={{ transform: `translateX(-${index * cardWidth}px)` }}
             >
               {highlights.map((item, i) => (
-                <div
+                <li
                   key={i}
                   className="min-w-90 rounded-xl p-0.5 bg-linear-to-r from-[#070F3D] to-[#755797]"
                 >
-                  <div className="rounded-xl bg-[#DDBFFF] p-7.5 h-80 flex flex-col gap-7.5">
-                    <img
-                      src={item.image}
-                      loading="lazy"
-                      alt={item.title}
-                      className="w-20 h-20"
-                    />
+                  <article className="rounded-xl bg-[#DDBFFF] p-7.5 h-80 flex flex-col gap-7.5">
+                    <figure>
+                      <img
+                        src={item.image}
+                        loading="lazy"
+                        alt=""
+                        className="w-20 h-20"
+                        aria-hidden="true"
+                      />
+                    </figure>
                     <div>
                       <h3 className="font-bold text-2xl text-[#000E38]">
                         {item.title}
@@ -83,35 +96,54 @@ const ExhibitionHighlights = () => {
                         {item.description}
                       </p>
                     </div>
-                  </div>
-                </div>
+                  </article>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
 
           {/* ARROWS */}
-          <div className="flex justify-center gap-4 mt-8">
+          <nav
+            className="flex justify-center gap-4 mt-8"
+            aria-label="Carousel navigation"
+          >
             <button
               onClick={prev}
               disabled={index === 0}
               className="border p-3 border-white group hover:bg-white rounded-full disabled:opacity-40 hover:cursor-pointer"
+              aria-label="Previous highlight"
+              type="button"
             >
-              <MoveLeft className="text-white group-hover:text-[#000E38] group-hover:cursor-pointer" />
+              <MoveLeft
+                className="text-white group-hover:text-[#000E38] group-hover:cursor-pointer"
+                aria-hidden="true"
+              />
             </button>
             <button
               onClick={next}
               disabled={index === highlights.length - 1}
               className="border p-3 border-white group hover:bg-white rounded-full disabled:opacity-40 hover:cursor-pointer"
+              aria-label="Next highlight"
+              type="button"
             >
-              <MoveRight className="text-white group-hover:text-[#000E38] group-hover:cursor-pointer" />
+              <MoveRight
+                className="text-white group-hover:text-[#000E38] group-hover:cursor-pointer"
+                aria-hidden="true"
+              />
             </button>
-          </div>
+          </nav>
         </div>
       </section>
 
-      <div className="md:mb-12 mb-8">
-        <img src={curve} alt="Curve" className="w-full" loading="lazy" />
-      </div>
+      <figure className="md:mb-12 mb-8">
+        <img
+          src={curve}
+          alt=""
+          className="w-full"
+          loading="lazy"
+          aria-hidden="true"
+        />
+      </figure>
     </>
   );
 };

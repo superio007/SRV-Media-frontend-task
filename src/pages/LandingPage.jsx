@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import { lazy, Suspense } from "react";
 
 const HeroSection = lazy(() => import("../components/Home/HeroSection"));
 const AwardsAndRecognitions = lazy(() =>
@@ -15,9 +15,10 @@ const ExhibitionHighlights = lazy(() =>
   import("../components/Home/ExhibitionHighlights")
 );
 import FallBack from "../components/Ui/Fallback";
+
 const LandingPage = () => {
   return (
-    <>
+    <article>
       <Suspense fallback={<FallBack />}>
         <HeroSection />
       </Suspense>
@@ -36,7 +37,7 @@ const LandingPage = () => {
       <Suspense fallback={<FallBack />}>
         <ExhibitionHighlights />
       </Suspense>
-    </>
+    </article>
   );
 };
 

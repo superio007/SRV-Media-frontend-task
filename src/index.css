@@ -4,6 +4,19 @@
     font-family: 'open-sans', sans-serif;
 }
 
+/* Screen reader only - for accessibility */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
 /* Enhanced scrollbar hiding for all browsers */
 .no-scrollbar::-webkit-scrollbar {
     display: none;
